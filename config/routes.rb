@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'main#home'
   get 'main/profile'
+  get 'main/mypage'
   get 'upload/index'
   get 'upload/write'
   post 'upload/create'

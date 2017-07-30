@@ -1,9 +1,23 @@
 class MainController < ApplicationController
-    def index
+    def home
+        
+    end
+    def mypage
+        
+    end
+    def create
         
     end
     
-    def home
+    def edit
+        
+    end
+    
+    def delete
+        
+    end
+    
+    def update
         
     end
 end
