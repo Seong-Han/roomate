@@ -1,0 +1,67 @@
+<haed>
+<link href="assets/mypage.scss" rel="stylesheet">
+</haed>
+
+<div class="container allbox mt-5">
+  
+  <div class="card" style="width: 23rem;">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-block">
+      <h4 class="card-title">유저이름이 나올꺼고 그 위에 사진은 유저 사진</h4>
+      <p class="card-text">여기는 생각좀 해보고..밑에 프로필 사진 업로드 하는 버튼을 다른 곳에 넣을까? </p>
+      <form action="/upload/create" method="POST" enctype="multipart/form-data">
+        쇼트 텍스트입니다 : <input type="text" name="short_text">
+        <input type="file" name="img_src" accept="image/*">
+        <input type="submit" value="저장하기">
+      </form>
+    </div>
+  </div>
+
+  <div class="container info ml-4">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#home" role="tab" aria-controls="home">여기는</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#profile" role="tab" aria-controls="profile">뭘 넣을까</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#messages" role="tab" aria-controls="messages">필요가 없을까?</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#settings" role="tab" aria-controls="settings">흐음</a>
+        </li>
+      </ul> 
+    
+      <div class="tab-content mt-4">
+        <div class="tab-pane active" id="home" role="tabpanel">
+            <form action="/mypage/create" method="post">
+              <div class="custom-controls-stacked">
+                <label class="custom-control custom-radio">
+                  <input id="radioStacked1" name="a" type="radio" class="custom-control-input" value='집순이'>
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-description">나는 집순이다.</span>
+                </label>
+                <label class="custom-control custom-radio">
+                  <input id="radioStacked2" name="a" type="radio" class="custom-control-input" value='역마살이'>
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-description">나는 싸돌아 다닌다.</span>
+                </label>
+              </div>
+              <input type="submit" value="Submit">
+            </form>  
+        </div>
+        <div class="tab-pane" id="profile" role="tabpanel">뿡</div>
+        <div class="tab-pane" id="messages" role="tabpanel">빵야</div>
+        <div class="tab-pane" id="settings" role="tabpanel">삥</div>
+      </div>
+  </div>
+</div>
+<script>
+  $(function () {
+    $('#myTab a:last').tab('show')
+    
+  })
+  
+</script>
+

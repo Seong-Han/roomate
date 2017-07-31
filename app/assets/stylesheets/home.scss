@@ -1,0 +1,20 @@
+// Place all the styles related to the main controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+      .carousel-item > a> img {
+          display: block;
+          margin: 0 auto;
+          height:none;
+          width:20%; height:40%;
+          }
+          .carousel-control-prev
+    {background-color:#BDBDBD ;
+    opacity:0.8;
+    width:5%;
+    }
+    .carousel-control-next
+    {background-color:#BDBDBD ;
+    opacity:0.8;
+    width:5%;
+    }
+    

@@ -1,8 +1,26 @@
 Rails.application.routes.draw do
+  
+  #마이페이지 라우트
+  get 'mypage/index'
+
+  post 'mypage/create'
+
+  get 'mypage/edit'
+
+  get 'mypage/delete'
+
+  post 'mypage/update'
+
   devise_for :users
+  
+  #핵심 네브바, 유형별로 탐색하는 거
   root 'main#home'
-  get 'main/profile'
-  get 'main/mypage'
+  get'main/home'
+  get 'main/haveroom'
+  get 'main/nhaveroom'
+  get 'main/school'
+  
+  #문석형이 작업한 라우트
   get 'upload/index'
   get 'upload/write'
   post 'upload/create'
