@@ -1,1 +1,13 @@
-asasas
+<div class="container">
+    <%= form_tag(main_haveroom_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "검색" %>
+        <%= submit_tag "Search" %>
+    <% end %>
+</div>
+
+
+<% if @search.present? %>
+  <%= @search %>
+<% else %>
+  <p>There are no posts containing the term(s) <%= params[:search] %>.</p>
+<% end %>

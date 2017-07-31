@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   
   #마이페이지 라우트
-  get 'mypage/index'
+  # get '/choice/write/:current_user_id' => 'choice#write'
+  get 'mypage/index' => 'mypage#index'
+  # get 'mypage/index'
 
   post 'mypage/create'
 

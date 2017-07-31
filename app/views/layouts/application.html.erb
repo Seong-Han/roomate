@@ -14,36 +14,9 @@
 </head>
 <body>
 <!-- Navigation -->
-    <nav class="navbar navbar-default  topnav" role="navigation">
-        <div class="container topnav">
-             <!--Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand topnav" href="/main/home">붕신</a>
-            </div>
-             <!--Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav  navbar-right mt-1">
-                <%if current_user.nil?%>
-                  <li>  <%= link_to '로그인', new_user_session_path %></li>
-                  <li><%= link_to '회원가입', new_user_registration_path %></li>
-                <%else%>
-                  <li><a href="#"> <%= current_user.name %>님 </a> </li>
-                  <li>  <%= link_to '마이페이지', mypage_index_path %></li>
-                  <li><%= link_to('Logout', destroy_user_session_path, method: :get) %> </li>
-                <%end%>
-                </ul>
-            </div>
-             <!--/.navbar-collapse -->
-        </div>
-    </nav>
+<!--navbar-fixed-top 요거 쓸지 말지 고민  인정-->
+
 <%= yield %>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-
 </body>
 </html>

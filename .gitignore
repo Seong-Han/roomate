@@ -15,3 +15,11 @@
 /log/*
 !/log/.keep
 /tmp
+/config/environmets/*
+/config/database.yml
+/config/secrets.yml
+:wq
+:q
+:wp
+:wq
+

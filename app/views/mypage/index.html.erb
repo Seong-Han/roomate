@@ -1,9 +1,11 @@
 <haed>
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+
 <link href="assets/mypage.scss" rel="stylesheet">
 </haed>
 
 <div class="container allbox mt-5">
-  
+  <!--여기가 프로필사진나오는 부분-->
   <div class="card" style="width: 23rem;">
     <img class="card-img-top" src="..." alt="Card image cap">
     <div class="card-block">
@@ -17,10 +19,11 @@
     </div>
   </div>
 
+  <!--그 옆에 박스-->
   <div class="container info ml-4">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" data-toggle="tab" href="#home" role="tab" aria-controls="home">여기는</a>
+          <a class="nav-link active" data-toggle="tab" href="#home" role="tab" aria-controls="home">유형검사</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" data-toggle="tab" href="#profile" role="tab" aria-controls="profile">뭘 넣을까</a>
@@ -34,22 +37,13 @@
       </ul> 
     
       <div class="tab-content mt-4">
+       
+        
         <div class="tab-pane active" id="home" role="tabpanel">
-            <form action="/mypage/create" method="post">
-              <div class="custom-controls-stacked">
-                <label class="custom-control custom-radio">
-                  <input id="radioStacked1" name="a" type="radio" class="custom-control-input" value='집순이'>
-                  <span class="custom-control-indicator"></span>
-                  <span class="custom-control-description">나는 집순이다.</span>
-                </label>
-                <label class="custom-control custom-radio">
-                  <input id="radioStacked2" name="a" type="radio" class="custom-control-input" value='역마살이'>
-                  <span class="custom-control-indicator"></span>
-                  <span class="custom-control-description">나는 싸돌아 다닌다.</span>
-                </label>
-              </div>
-              <input type="submit" value="Submit">
-            </form>  
+            <div id='first'>
+              <h1>유형 검사 하러 가시겠습니까?</h1>
+              <button id='comments-link'>클릭</button>
+            </div>
         </div>
         <div class="tab-pane" id="profile" role="tabpanel">뿡</div>
         <div class="tab-pane" id="messages" role="tabpanel">빵야</div>
@@ -58,10 +52,21 @@
   </div>
 </div>
 <script>
-  $(function () {
-    $('#myTab a:last').tab('show')
-    
-  })
+
+>
+    $(function () {
+      $('#myTab a:last').tab('show');
+      
+     });
   
+    $('#comments-link').on('click', function(e) {
+        e.preventDefault();
+        
+      
+        $('#first').remove();
+        $('#home').load('test.html').hide().fadeIn('slow');
+      });
+    
+    
 </script>
 
