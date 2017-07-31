@@ -11,14 +11,18 @@
   <meta name="description" content="">
   <meta name="author" content="">
    <link href="assets/landing-page.css" rel="stylesheet">
-   
+ 
+  
+ 
   
 
 </head>
+
 <body>
     
-<script>
-        $(function() {
+  
+<script type="text/javascript">
+        $(document).ready(function () {
                $.ajax({
                   beforeSend: function(xhr) {     //요청을 전송하기전에 실행
                    if(xhr.overrideMimeType)  {    //지원되면
@@ -70,21 +74,21 @@
             
             
             $('#first').remove();
-            $('#second').load('/mypage/test.html.erb').hide().fadeIn('slow');
+            $('#second').load('/mypage/test.html').hide().fadeIn('slow');
           });
           
-          /*$('#submit').on('click', function(e) { 
+          $('#submit').on('click', function(e) { 
+              $('#second').remove();
               $.ajax({
                         type: 'POST',
                         url: "/mypage/create",
                         data: $('#come').serialize(),
                    }).done( function(data) {
-                     $('#second').remove();
-                     $('#second').load('result.html');
+                     $('#second').load('/mypage/result.html');
                    }).fail( function() {
-                     $('#view').html('데이터를 가져오지 못했습니다.');
+                     $('#second').html('데이터를 가져오지 못했습니다.');
               });
-          });  */     
+          });      
            
           
     });

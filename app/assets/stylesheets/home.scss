@@ -7,7 +7,6 @@
     height:none;
     width:20%; height:20%;
     }
-    
     .carousel-control-prev
     {background-color:#BDBDBD ;
     opacity:0.8;
@@ -19,7 +18,65 @@
     opacity:0.8;
     width:5%;
     }
-    .topnav {
-    font-size: 14px; 
+.menu-nav {
+    width: 100%;
+    background-color:#FFD039;
+    display: inline-block;
 }
 
+.menu-nav-container{
+    width: 924px;
+    height: 50px;
+    background-color:#FFD039;
+    list-style: none;
+    text-align: center;
+}
+
+.menu-nav-list{
+    float:left;
+    padding: 0px 20px;
+    margin-top:20px;
+    margin-bottom:20px;
+    text-align: center;
+}
+
+.menu-nav-text{
+    display: block;
+    font-size: 1.44rem;
+    color: #FFFFFF;
+}
+
+.menu-nav-text:hover {
+    color : #125BA5;
+    text-decoration:none;
+}
+//네브바 위에고정
+body {
+  margin: 0;
+}
+nav {
+  background-color: #3A4145;
+  width: 100%;
+}
+ul {
+  list-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+li {
+  display: inline;
+}
+a {
+  text-decoration: none;
+  padding: 20px;
+  display: inline-block;
+
+}
+.fixed {
+  position: fixed;
+  top: 0;
+}
+.navbottom{
+    margin: 0 auto;
+}

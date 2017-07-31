@@ -11,13 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170731051943) do
+ActiveRecord::Schema.define(version: 20170731181838) do
+
+  create_table "haverooms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "nhaverooms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string   "text_save"
     t.string   "img_src"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "schools", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "category"
+    t.string   "school_name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "user_infos", force: :cascade do |t|
@@ -44,6 +62,7 @@ ActiveRecord::Schema.define(version: 20170731051943) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "image"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

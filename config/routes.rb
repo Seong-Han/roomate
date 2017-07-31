@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # get '/choice/write/:current_user_id' => 'choice#write'
   get '/mypage/index/:current_user_id' => 'mypage#index'
   
-
+  post 'mypage/profile'
   post 'mypage/create'
 
   get 'mypage/edit'

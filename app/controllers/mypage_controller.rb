@@ -25,6 +25,16 @@ class MypageController < ApplicationController
   def update
   end
   
+  def profile
+    # parsed_db = Noticetitle.where("link" => each_notice.link).take
+    newimage = User.where(:id => current_user.id).take
+    newimage.image = params[:image]
+    newimage.save
+    # Post.create(content: params[:content].
+    #                     image: params[:image])
+    redirect_to :back
+  end
+  
   def result
     @result=UserInfo.all
   end

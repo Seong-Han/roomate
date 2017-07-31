@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+
 gem 'rails_db'
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -46,7 +47,7 @@ group :development do
   gem 'spring'
   
   gem 'carrierwave'
-  gem 'fog-aws'
+  
   
 end
 

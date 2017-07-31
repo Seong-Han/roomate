@@ -5,12 +5,19 @@
     <input type="submit" value="제출">
   </form>
   
-  <% @search.each do |p| %>
-    <%= @user.where(:id => p.user_id).take.name %>
-    <%= @user.where(:id => p.user_id).take.gender %>
-    <%= p.aa %>
-    <%= p.school_name %>
-    <%= p.created_at.strftime("%Y-%m-%d") %>
+  
+  
+  <% if @search.present? %>
+    <% @search.each do |p| %>
+      <%= @user.where(:id => p.user_id).take.name %>
+      <%= @user.where(:id => p.user_id).take.gender %>
+      <%= p.aa %>
+      <%= p.school_name %>
+      <%= p.created_at.strftime("%Y-%m-%d") %>
+    <% end %>
+  <% else %>
+    <p> <%= params[:search] %>를 포함한 검색 결과가 없습니다.</p>
   <% end %>
+  
   
 </div>
