@@ -6,8 +6,7 @@
 
 body,
 html {
-    width: 100%;
-    height: 100%;
+    min-width: 1024px;
 }
 
 body,
@@ -19,10 +18,6 @@ h5,
 h6 {
     font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
-}
-
-.topnav {
-    font-size: 14px; 
 }
 
 .lead {
@@ -93,8 +88,11 @@ h6 {
     letter-spacing: 2px;
 }
 .content-section-nav{
-    padding: 10px 0;
-    background-color: #ffffff;
+    background-color: #FFD039;
+    font-size:2.4rem;
+	bottom: 0;
+	padding: 30px 0;
+	text-align: center;
 }
 .content-section-a {
     padding: 50px 0;
@@ -175,3 +173,26 @@ footer {
 p.copyright {
     margin: 15px 0 0;
 }
+
+.li-style {
+    display:inline;
+    background-color:#FFD039;
+}
+.navcontainer{
+    width:924px;
+    padding-top:10px;
+    margin:auto;
+    display: inline-block;
+}
+
+.navtext{
+    width:225px;
+    float:left;
+    padding: 0px 20px;
+    color:#FFFFFF;
+    text-align: center;
+}
+
+.navtext:hover {color :#125BA5 ; text-decoration:none;
+}
+/* 지금*/

@@ -7,35 +7,19 @@
     height:none;
     width:20%; height:20%;
     }
+    
     .carousel-control-prev
     {background-color:#BDBDBD ;
     opacity:0.8;
     width:5%;
     }
+    
     .carousel-control-next
     {background-color:#BDBDBD ;
     opacity:0.8;
     width:5%;
     }
-    body, html {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    }
-    .topnavv{
-    width: 100%;
-    position: fixed;
-    z-index: 1;
-    margin: 0;
-    }
-    .content-body {
-    width: 100%;
-    height: 800px;
-    margin: 0;
-    top: 400px;
-    z-index: 2;
-    position: relative;
-    }
+    .topnav {
+    font-size: 14px; 
+}
 
-    

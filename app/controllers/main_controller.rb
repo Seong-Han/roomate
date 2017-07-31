@@ -6,12 +6,22 @@ class MainController < ApplicationController
     end
     #방이 있는 사람이 룸메이트 찾는 거
     def haveroom
-        @serach = UserInfo.all
-        if params[:search]
-            @search = UserInfo.search(params[:search]).order("created_at DESC")
-        else
-            @search = UserInfo.all.order(("created_at DESC"))
-        end
+        
+        @search = UserInfo.where("aa LIKE ?", "%#{params[:search]}%")
+        @user = User.all
+        # @allsearch = UserInfo.all
+        
+    #   @posts = Model.all
+    #   @books = Book.all
+    #else
+    #  @posts = Model.where("title LIKE ?", "%#{params[:query]}%")
+    # end
+        # @serach = UserInfo.all
+        # if params[:search]
+        #     @search = UserInfo.search(params[:search]).order("created_at DESC")
+        # else
+        #     @search = UserInfo.all.order(("created_at DESC"))
+        # end
     end
     #방이 없는 사람이 방을 찾는 거
     def nhaveroom

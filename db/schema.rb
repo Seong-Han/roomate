@@ -21,9 +21,12 @@ ActiveRecord::Schema.define(version: 20170731051943) do
   end
 
   create_table "user_infos", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "category"
     t.string   "aa"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "school_name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|

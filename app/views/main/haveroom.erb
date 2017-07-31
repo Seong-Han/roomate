@@ -1,13 +1,16 @@
-<div class="container">
-    <%= form_tag(main_haveroom_path, :method => "get", id: "search-form") do %>
-        <%= text_field_tag :search, params[:search], placeholder: "검색" %>
-        <%= submit_tag "Search" %>
-    <% end %>
+<div class="container mt-3">
+  
+  <form action="/main/haveroom">
+    <input type="text" name="search">
+    <input type="submit" value="제출">
+  </form>
+  
+  <% @search.each do |p| %>
+    <%= @user.where(:id => p.user_id).take.name %>
+    <%= @user.where(:id => p.user_id).take.gender %>
+    <%= p.aa %>
+    <%= p.school_name %>
+    <%= p.created_at.strftime("%Y-%m-%d") %>
+  <% end %>
+  
 </div>
-
-
-<% if @search.present? %>
-  <%= @search %>
-<% else %>
-  <p>There are no posts containing the term(s) <%= params[:search] %>.</p>
-<% end %>

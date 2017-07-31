@@ -6,25 +6,23 @@
 </head>
 
 <body>
-    <script>//Initial load of page
-$(document).ready(sizeContent);
-
-//Every resize of window
-$(window).resize(sizeContent);
-
-//Dynamically assign height
-function sizeContent() {
-var newHeight = $("html").height() + "px";
-$(".topnavv").css("height", newHeight);
-$(".content-body").css("top", newHeight);
-}
-
-//Fade header on scroll
-$(window).scroll(function(){
-    $(".topnavv").css("opacity", 1 - $(window).scrollTop() / 500);
-  });</script>
+    <script>
+    
+   $(document).ready(function(){
+	   $(window).bind('scroll', function() {
+	   var navHeight = $( window ).height() - 70;
+			 if ($(window).scrollTop() > navHeight) {
+				 $('nav').addClass('fixed');
+			 }
+			 else {
+				 $('nav').removeClass('fixed');
+			 }
+		});
+	});
+	</script>
+	<section>
     <div class="topnavv">
-        <nav class="navbar navbar-default  topnav" role="navigation">
+        <div class="navbar navbar-default  topnav" role="navigation">
         <div class="container topnav">
              <!--Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -45,7 +43,8 @@ $(window).scroll(function(){
                 <%else%>
                   
                   <li><a href="#"> <%= current_user.name %>님 </a> </li>
-                    <li>  <%= link_to '마이페이지', mypage_index_path %></li>
+                    
+                    <li> <a href="/mypage/index/<%= current_user.id%>">마이페이지</a></li>
             
                   <li><%= link_to('Logout', destroy_user_session_path, method: :get) %> </li>
                 <%end%>
@@ -53,7 +52,7 @@ $(window).scroll(function(){
             </div>
              <!--/.navbar-collapse -->
         </div>
-    </nav>
+    </div>
      <!--앞에 넘어가는 카드 부분이얌-->
      <div id="carouselExampleIndicators" class="carousel slide mb-5" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -105,19 +104,20 @@ $(window).scroll(function(){
     </div>
     
     <div class="content-body">
+        <!--네브바-->
     <div class="content-section-nav">
-    	<ul class=""style="display: block;">
-            <li class=""><a ui-sref="" href="">방으로 찾기</a></li>
-            <li class=""><a ui-sref="" href="">기숙사로 찾기</a></li>
-            <li class=""><a ui-sref="" href="">붕.신 찾기</a></li>
-            <li class=""><a ui-sref="" href="">질문 있어요</a></li>
+    	    <nav class="navcontainer">
+    	        <li class="li-style"><a class="navtext" ui-sref="" href="">방으로 찾기</a></li>
+                <li class="li-style"><a class="navtext" ui-sref="" href="">기숙사로 찾기</a></li>
+                <li class="li-style"><a class="navtext" ui-sref="" href="">붕.신 찾기</a></li>
+                <li class="li-style"><a class="navtext" ui-sref="" href="">질문 있어요</a></li>
+    	    </nav>
+            
         </ul>
-    </div>
+    </div></section>
+    <section>
     <div class="content-section-a">
-<!--여기에 네브바가 있어야해 위에 놈에 대한 각각 흘러가는 카드에 대한 네브바-->
-   
-    <!--네브바 하겟음
-    -->
+
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 col-sm-6">
@@ -240,8 +240,8 @@ $(window).scroll(function(){
         </div>
         
     </footer>
-
-    
+</div>
+</section>
 <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
 </body>
 

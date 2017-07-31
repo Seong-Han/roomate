@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   
   #마이페이지 라우트
   # get '/choice/write/:current_user_id' => 'choice#write'
-  get 'mypage/index' => 'mypage#index'
-  # get 'mypage/index'
+  get '/mypage/index/:current_user_id' => 'mypage#index'
+  
 
   post 'mypage/create'
 
@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   get 'mypage/delete'
 
   post 'mypage/update'
+  
+  get 'mypage/test'
+  
+  get 'mypage/result'
 
   devise_for :users
   
