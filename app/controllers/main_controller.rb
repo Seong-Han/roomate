@@ -29,7 +29,18 @@ class MainController < ApplicationController
     def nhaveroom
     end
     #기숙사 룸메 찾는 거 
+    
     def school
+        @user = User.all
+        @userinfo = UserInfo.all
+        
+         unless UserInfo.where("school_name LIKE ?", "%#{params[:school]}%").nil? && User.where("gender LIKE ?", "%#{params[:gender]}%").nil?
+            @select = UserInfo.search(params[:school]).order("created_at DESC")
+         end
+            # @select = UserInfo.search(params[:school]).order("created_at DESC") && User.search(params[:gender]).order("created_at DESC") 
+    
+        
+        # @select = UserInfo.where(:school_name => params[:school]).take
         
     end
 

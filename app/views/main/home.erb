@@ -20,7 +20,7 @@ $(document).ready(function(){
 	</script>
 	<section>
 	 <!-- 로그인 회원가입-->
-                <ul class="nav navbar-right mt-1">
+    <ul class="nav navbar-right mt-1">
                 <%if current_user.nil?%>
                   <li>  <%= link_to '로그인', new_user_session_path %></li>
                   <li><%= link_to '회원가입', new_user_registration_path %></li>
@@ -33,53 +33,53 @@ $(document).ready(function(){
                   <li><%= link_to('Logout', destroy_user_session_path, method: :get) %> </li>
                 <%end%>
                 </ul>
-     <!--앞에 넘어가는 카드 부분이얌-->
-     <div id="carouselExampleIndicators" class="carousel slide mb-5" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      </ol>
+    <!--앞에 넘어가는 카드 부분이얌-->
+    <div id="carouselExampleIndicators" class="carousel slide mb-5" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        </ol>
         <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                    <a href="/main/haveroom">
-                      <img class="d-block img-fluid fullsize" src="https://scontent-hkg3-1.xx.fbcdn.net/v/t1.0-9/18275238_766269973546728_3730559585947363643_n.jpg?oh=d73d9ed2ae0cf0a4533f55438844cf7a&oe=59B83A22" alt="First slide">
-                      <div class="carousel-caption d-none d-md-block">
-                        <h3>집있는 놈이 룸메를 구한다</h3>
-                        <p>넣어준다 넣어준다 </p>
-                      </div>
-                    </a>
+            <div class="carousel-item active">
+                <a href="/main/haveroom">
+                <img class="d-block img-fluid fullsize" src="https://scontent-hkg3-1.xx.fbcdn.net/v/t1.0-9/18275238_766269973546728_3730559585947363643_n.jpg?oh=d73d9ed2ae0cf0a4533f55438844cf7a&oe=59B83A22" alt="First slide">
+                <div class="carousel-caption d-none d-md-block">
+                <h3>집있는 놈이 룸메를 구한다</h3>
+                <p>넣어준다 넣어준다 </p>
                 </div>
+                </a>
+            </div>
 
-                <div class="carousel-item">
-                  <a href="/main/nhaveroom">
-                      <img class="d-block img-fluid fullsize" src="https://scontent-hkg3-1.xx.fbcdn.net/v/t1.0-9/18403399_767761466730912_2200536950366929019_n.jpg?oh=3e2495cc689e691b8cba0f916b6e7f5c&oe=59BD603D" alt="Second slide">
-                      <div class="carousel-caption d-none d-md-block">
-                        <h3>집없는 놈이 방을 구한다</h3>
-                        <p>넣어준다 넣어준다 </p>
-                      </div>
-                  </a>
-                </div>
-                
-                <div class="carousel-item">
-                    <a href="/main/school">
-                      <img class="d-block img-fluid fullsize" src="https://scontent-icn1-1.xx.fbcdn.net/v/t1.0-9/18301677_763117267195332_7096053715557585038_n.jpg?oh=89137518415c0f35bd6d77b0c7a74011&oe=59AFFAF4" alt="Third slide">
-                      <div class="carousel-caption d-none d-md-block">
-                        <h3>사실상 둘다 없는 사람, 기숙사 룸메를 구한다.</h3>
-                        <p>넣어준다 넣어준다 </p>
-                      </div>
-                    </a>
-                </div>
-                
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" color="black">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
+            <div class="carousel-item">
+              <a href="/main/nhaveroom">
+                  <img class="d-block img-fluid fullsize" src="https://scontent-hkg3-1.xx.fbcdn.net/v/t1.0-9/18403399_767761466730912_2200536950366929019_n.jpg?oh=3e2495cc689e691b8cba0f916b6e7f5c&oe=59BD603D" alt="Second slide">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h3>집없는 놈이 방을 구한다</h3>
+                    <p>넣어준다 넣어준다 </p>
+                  </div>
+              </a>
+            </div>
+            
+            <div class="carousel-item">
+                <a href="/main/school">
+                  <img class="d-block img-fluid fullsize" src="https://scontent-icn1-1.xx.fbcdn.net/v/t1.0-9/18301677_763117267195332_7096053715557585038_n.jpg?oh=89137518415c0f35bd6d77b0c7a74011&oe=59AFFAF4" alt="Third slide">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h3>사실상 둘다 없는 사람, 기숙사 룸메를 구한다.</h3>
+                    <p>넣어준다 넣어준다 </p>
+                  </div>
                 </a>
+            </div>
                 
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-                </a>
-      </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" color="black">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+            </a>
+                
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+            </a>
+        </div>
     </div>
     
     <div class="content-body">
