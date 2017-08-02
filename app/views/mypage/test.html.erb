@@ -15,6 +15,7 @@
                 </div>
                 <button id="test">클릭</button>
             </form>  -->
+    <div id="first1">
       <%= form_tag '/mypage/create', :remote => true, :id => 'come' do %>    
           <%= radio_button_tag(:a, "집순이") %>
           <%= label_tag(:radio1, "나는 집순이다") %>
@@ -22,5 +23,12 @@
           <%= label_tag(:radio2, "나는 싸돌아 다닌다") %>
           
           <p class="button"><%= submit_tag "  Create  ", :id => 'test' %></p>
-      <% end %>    
+      <% end %>  
+    </div>  
+    
+    <div id="second1">
+      
+    </div>
           
+    
+  

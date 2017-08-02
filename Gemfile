@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
-
+gem 'will_paginate', '~> 3.1.0'
 gem 'filterrific'
+#필터리픽 이거 지워야함
+
 gem 'rails_db'
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -11,15 +11,15 @@ class MypageController < ApplicationController
   end
   
   #성향 만들기
-  def school_create
-    something = School.new
-    something.category = params[:category]
-    something.school_name = params[:school]
-    something.user_id = current_user.id
-    something.one_time = true
-    something.save
-    redirect_to "/mypage/index/#{current_user.id}"
-  end
+  # def school_create
+  #   something = School.new
+  #   something.category = params[:category]
+  #   something.school_name = params[:school]
+  #   something.user_id = current_user.id
+  #   something.one_time = true
+  #   something.save
+  #   redirect_to "/mypage/index/#{current_user.id}"
+  # end
     
     
   def create
@@ -30,7 +30,7 @@ class MypageController < ApplicationController
     something.user_id = current_user.id
     something.one_time = true
     something.save
-    redirect_to "/mypage/index/#{current_user.id}"
+    #redirect_to "/mypage/index/#{current_user.id}"
   end
   
   #성향 편집

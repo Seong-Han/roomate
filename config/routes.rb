@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   
   post 'mypage/profile'
   post 'mypage/create'
-  post 'mypage/school_create'
+  # post 'mypage/school_create'
 
   get 'mypage/edit'
 

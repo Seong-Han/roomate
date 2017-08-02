@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20170802035847) do
 
   create_table "user_infos", force: :cascade do |t|
     t.integer  "user_id"
+    t.string   "gender"
     t.string   "category"
     t.string   "aa"
     t.string   "school_name"
