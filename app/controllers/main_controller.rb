@@ -32,12 +32,26 @@ class MainController < ApplicationController
     
     def school
         @user = User.all
-        @userinfo = UserInfo.all
-        
+        @u_info = UserInfo.all
          unless UserInfo.where("school_name LIKE ?", "%#{params[:school]}%").nil? && User.where("gender LIKE ?", "%#{params[:gender]}%").nil?
             @select = UserInfo.search(params[:school]).order("created_at DESC")
          end
-            # @select = UserInfo.search(params[:school]).order("created_at DESC") && User.search(params[:gender]).order("created_at DESC") 
+        #스쿨로 한 번 돌리고 그중에서 gender가 특정인 놈 찾는 쪽으로 코드 짜기
+        # unless School.where("school_name LIKE ?", "%#{params[:school]}%").nil?
+        # s_search = School.where("school_name LIKE ?", "%#{params[:school]}%")
+        #     s_search.each do |meet|
+        #         if @user.where(:id => meet.user_id).take.gender == params[:gender]
+        #             @rselect = meet
+        #         end
+        #     end
+        # end
+        #         #s_Search의 gender가 params[:gnerder이냐?]
+        #         @user.where(:gender => params[:gender])
+        #  unless School.where("school_name LIKE ?", "%#{params[:school]}%").nil? && User.where("gender LIKE ?", "%#{params[:gender]}%").nil?
+        #     @select = School.search(params[:school]).order("created_at DESC")
+        #  end
+            
+        # @select = UserInfo.search(params[:school]).order("created_at DESC") && User.search(params[:gender]).order("created_at DESC") 
     
         
         # @select = UserInfo.where(:school_name => params[:school]).take

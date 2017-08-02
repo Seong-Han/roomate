@@ -1,6 +1,6 @@
 
 
-            <form id="come" style="display: hidden">
+            <!--<form id="come" style="display: hidden">
                 <div class="custom-controls-stacked">
                   <label class="custom-control custom-radio">
                     <input id="radioStacked1" name="a" type="radio" class="custom-control-input" value='집순이'>
@@ -14,4 +14,13 @@
                   </label>
                 </div>
                 <button id="test">클릭</button>
-            </form>  
+            </form>  -->
+      <%= form_tag '/mypage/create', :remote => true, :id => 'come' do %>    
+          <%= radio_button_tag(:a, "집순이") %>
+          <%= label_tag(:radio1, "나는 집순이다") %>
+          <%= radio_button_tag(:a, "역마살이") %>
+          <%= label_tag(:radio2, "나는 싸돌아 다닌다") %>
+          
+          <p class="button"><%= submit_tag "  Create  ", :id => 'test' %></p>
+      <% end %>    
+          

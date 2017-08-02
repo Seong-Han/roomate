@@ -5,6 +5,7 @@ class CreateUserInfos < ActiveRecord::Migration
       t.string :category
       t.string :aa
       t.string :school_name
+      t.boolean :one_time
       t.timestamps null: false
     end
   end

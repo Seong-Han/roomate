@@ -1,29 +1,53 @@
 <form class="form-inline" action="/main/school">
    <label class="mr-sm-2" for="inlineFormCustomSelect">학교</label>
                 <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect" name="school">
+                  <option selected>대학교 선택</option>
                   <option value="경희대학교(국제)">경희대학교(국제)</option>
                   <option value="경희대학교(서울)">경희대학교(서울)</option>
                   <option value="서울과기대">서울과기대</option>
+                  <option value="allpass">무관</option>
                 </select>
-    <label class="mr-sm-2" for="inlineFormCustomSelect">셩별</label>
-                <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect" name="gender">
-                <option value="남자">남자</option>
-                <option value="여자">여자</option>
-                </select>
+                
+                <div class="custom-controls-stacked">
+                    <span>성별</span>
+                  <label class="custom-control custom-radio">
+                    <input id="radioStacked1" name="a" type="radio" class="custom-control-input" value='남자'>
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">남자</span>
+                  </label>
+                  <label class="custom-control custom-radio">
+                    <input id="radioStacked2" name="a" type="radio" class="custom-control-input" value='여자'>
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">여자</span>
+                  </label>
+                </div>
+            
+                
+                
+      
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
-<% if @select.present? %>
-    <% @select.each do |select| %>
-        <%= @user.where(:id => select.user_id).take.name %>
-        <%= @user.where(:id => select.user_id).take.gender %>
-        <%= select.aa %>
-        <%= select.school_name %>
-        <%= select.created_at.strftime("%Y-%m-%d") %>
-    <% end %>
-<% else %>
-    <p> 검색 결과가 없습니다.</p>
-<% end %>
 
-  
+<div class="container allbox mt-5">
+  <!--여기가 프로필사진나오는 부분-->
+  <% if @select.present? %>
+      <% @select.each do |select| %>
+      <div class="card col-3" style="width: 23rem;">
+        <img class="card-img-top" src="<%= @user.where(:id => select.user_id).take.image %>" alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title"><%= @user.where(:id => select.user_id).take.name %></h4>
+          <p class="card-text">간략한 자기소개 쓰게하기 나중에 db 추가할거임 
+          ( 잘검색했는지  확인용 정보 나중에 지울거임<%= select.school_name %> <%= select.created_at.strftime("%Y-%m-%d") %> )</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <!--여기를 에이젝스로 바꿔서 이 사람에 대한 상세 정보가 위에 뾰ㅗㅇ.. 만들어야함 링크만 만들어주면 제가 코드 작업은 할 수 있습니다.-->
+        </div>
+      </div>
+     <% end %>
+  <% else %>
+    <p> 검색 결과가 없습니다.</p>
+  <% end %>
 </div>
+
+
+        

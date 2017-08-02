@@ -16,9 +16,11 @@
               <%= f. text_field :name, autofocus: true, class: "form-control" %>
             </div>
             
-            <div class="form-input">
+            <div class="form-input mt-2">
               <%= f.label :성별 %>
-              <%= f. text_field :gender, autofocus: true, class: "form-control" %>
+              <%= f.select(:gender, ['남자', '여자'],  { :class => 'form-control' }) %>
+              <!-- 기본 선택하는 부분 {include_blank: "Select something"},-->
+              
             </div>
            <!--성별은 나중에 체크박스로 바꿀거임-->
            

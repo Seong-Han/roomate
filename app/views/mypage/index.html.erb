@@ -39,66 +39,77 @@
   <div class="container info ml-4">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" data-toggle="tab" href="#" role="tab" aria-controls="haveroom">사람 없음!</a>
+          <a class="nav-link active" data-toggle="tab" href="#haveroom" role="tab" aria-controls="haveroom">사람 없음!</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#" role="tab" aria-controls="nhaveroom">방 찾음!</a>
+          <a class="nav-link" data-toggle="tab" href="#nhaveroom" role="tab" aria-controls="nhaveroom">방 찾음!</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#" role="tab" aria-controls="school">긱사 룸메 찾음!</a>
+          <a class="nav-link" data-toggle="tab" href="#school" role="tab" aria-controls="school">긱사 룸메 찾음!</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#" role="tab" aria-controls="settings">개인정보 수정</a>
+          <a class="nav-link" data-toggle="tab" href="#settings" role="tab" aria-controls="settings">개인정보 수정</a>
         </li>
       </ul> 
     
         <div class="tab-content mt-4">
-          <div class="tab-pane active" id="haveroom" role="tabpanel">
-              <div id="first">
-                <h1>유형 검사 하러 가시겠습니까?</h1>
-                <button id="button">클릭</button>
-              </div>
-              <div id="second"> 
-          </div>
-        </div>
+            <div class="tab-pane active" id="haveroom" role="tabpanel">
+                <div id="first">
+                  <h1>유형 검사 하러 가시겠습니까?</h1>
+                  <button id="button">클릭</button>
+                </div>
+                <div id="second"> 
+                
+                </div>
+                <div id="third">
+                  
+                </div>
+            </div>
         
-        <div class="tab-pane" id="nhaveroom" role="tabpanel">
-          
-        </div>
         
-        <div class="tab-pane" id="school" role="tabpanel">
-          <form class="form-inline" action="/mypage/create" method="post">
-                <input type="hidden" name="category" value="school">
-                <label class="mr-sm-2" for="inlineFormCustomSelect">학교 고르기</label>
-                <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect" name="school">
-                  <option value="경희대학교(국제)">경희대학교(국제)</option>
-                  <option value="경희대학교(서울)">경희대학교(서울)</option>
-                  <option value="서울과기대">서울과기대</option>
-                </select>
-                <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
+            <div class="tab-pane" id="nhaveroom" role="tabpanel">
+              
+            </div>
+            
+            <div class="tab-pane" id="school" role="tabpanel">
+              <% if @u_info.where(:user_id => current_user.id).take.nil? %>
+                <form class="form-inline" action="/mypage/create" method="post">
+                      <input type="hidden" name="category" value="school">
+                      <label class="mr-sm-2" for="inlineFormCustomSelect">학교 고르기</label>
+                      <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect" name="school">
+                        <option value="경희대학교(국제)">경희대학교(국제)</option>
+                        <option value="경희대학교(서울)">경희대학교(서울)</option>
+                        <option value="서울과기대">서울과기대</option>
+                      </select>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+              <% else %>
+              <h3>내가 작성한 내용</h3>
+              학교 : <%= @u_info.where(:user_id => current_user.id).take.school_name %>
+              <button type="submit" class="btn btn-primary">수정하기</button>
+              <% end %>
+            </div>
         
-        <div class="tab-pane" id="settings" role="tabpanel">삥</div>
-      </div>
+            <div class="tab-pane" id="settings" role="tabpanel">
+               <h1>삥</h1>
+            
+            </div>
+         </div>  
+        
   </div>
-</div>
-<script>
 
->
-    /*$(function () {
-      $('#myTab a:last').tab('show');
+<script>
+    // /*$(function () {
+    //   $('#myTab a:last').tab('show');
       
-     });
+    // });
   
-    $('#button').on('click', function(e) {
-        e.preventDefault();
+    // $('#comments-link').on('click', function(e) {
+    //     e.preventDefault();
         
       
-        $('#first').remove();
-        $('#home').load('test.html').hide().fadeIn('slow');
-      });*/
-    
-    
-</script>
+    //     $('#first').remove();
+    //     $('#haveroom').load('test.html').hide().fadeIn('slow');
+    //   });*/
 
+</script>
