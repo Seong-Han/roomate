@@ -20,17 +20,28 @@ class MypageController < ApplicationController
   #   something.save
   #   redirect_to "/mypage/index/#{current_user.id}"
   # end
-    
+    def setting_create
+      u_info = UserInfo.all
+      user = User.all
+      setting = u_info.where(:user_id => current_user.id).take.gender
+      setting.each do |s|
+        s.gender = params[:gender]
+        s.save
+      redirect_to "/mypage/index/#{current_user.id}"   
+      end
+    end
     
   def create
     something = UserInfo.new
     something.aa = params[:a]
     something.category = params[:category]
     something.school_name = params[:school]
+    something.gender = params[:gender]
+    something.age = params[:age]
     something.user_id = current_user.id
     something.one_time = true
     something.save
-    #redirect_to "/mypage/index/#{current_user.id}"
+    redirect_to "/mypage/index/#{current_user.id}"
   end
   
   #성향 편집

@@ -2,14 +2,14 @@
     <!-- Custom CSS -->
 
     <link href="assets/home.scss" rel="stylesheet">
-
+    <script src="https://use.fontawesome.com/09bbfa620e.js"></script>   
 </head>
 
 <body>
     <script>
  $(document).ready(function(){
   $(window).scroll(function(){
-    if ($(this).scrollTop() > 430) {
+    if ($(this).scrollTop() > 520) {
       $('nav').addClass('fixed');
     }
     else {
@@ -30,9 +30,10 @@ $(".header").css({opacity:dif});
 	</script>
 	<section>
 	 <!-- 로그인 회원가입-->
-    <ul class="nav navbar-right mt-1">
+    <ul class="main-nav new-user">
+                  <li><a href="#" class="logo" style="margin-top:0px"><img src="http://platum.kr/wp-content/uploads/2015/10/unnamed-12.png" height=70px ></a></li>
                 <%if current_user.nil?%>
-                  <li>  <%= link_to '로그인', new_user_session_path %></li>
+                  <li><%= link_to '로그인', new_user_session_path %></li>
                   <li><%= link_to '회원가입', new_user_registration_path %></li>
                 <%else%>
                   
@@ -97,11 +98,10 @@ $(".header").css({opacity:dif});
     <!-- 네브바-->
     <nav>
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Team</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#">방으로 찾기</a></li>
+            <li><a href="#">기숙사로 찾기</a></li>
+            <li><a href="#">붕:신찾기</a></li>
+            <li><a href="#">질문있어요</a></li>
         </ul>
     </nav>
     <div class="content">

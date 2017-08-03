@@ -10,20 +10,7 @@
               <%= f.label :가입메일 %>
               <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "likelion@likelion"%>
             </div>
-             
-            <div class="form-input">
-              <%= f.label :이름 %>
-              <%= f. text_field :name, autofocus: true, class: "form-control" %>
-            </div>
             
-            <div class="form-input mt-2">
-              <%= f.label :성별 %>
-              <%= f.select(:gender, ['남자', '여자'],  { :class => 'form-control' }) %>
-              <!-- 기본 선택하는 부분 {include_blank: "Select something"},-->
-              
-            </div>
-           <!--성별은 나중에 체크박스로 바꿀거임-->
-           
             <div class="form-input">
               (<%= @minimum_password_length %>글자 이상!) <%= f.label :비밀번호 %>
               <% if @minimum_password_length %>
@@ -35,7 +22,17 @@
               <%= f.label :비밀번호_확인 %>
               <%= f.password_field :password_confirmation, autocomplete: "off",class: "form-control" %>
             </div>
-                        
+      
+             
+            <div class="form-input">
+              <%= f.label :이름 %>
+              <%= f. text_field :name, autofocus: true, class: "form-control" %>
+            </div>
+            
+           
+            
+            
+           
           
             <button type="submit" class="btn btn-primary mt-3">회원 가입</button>
           <% end %>

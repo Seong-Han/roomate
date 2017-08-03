@@ -33,6 +33,7 @@ class MainController < ApplicationController
     def school
         @user = User.all
         @u_info = UserInfo.all
+        @select  = @u_info.where('school_name = ? AND gender = ? AND age >= ? AND age <= ? ', params[:school], params[:gender], params[:minage], params[:maxage])
         # @select = Array.new
         # unless UserInfo.where("gender LIKE ?", "%#{params[:gender]}%").nil?
         #     g_search = UserInfo.where("gender LIKE ?", "%#{params[:gender]}%")     
@@ -51,9 +52,9 @@ class MainController < ApplicationController
             
         #     UserInfo.where("school_name LIKE ?", "%#{params[:school]}%")
         
-         unless UserInfo.where("school_name LIKE ?", "%#{params[:school]}%").nil? && User.where("gender LIKE ?", "%#{params[:gender]}%").nil?
-            @select = UserInfo.search(params[:school]).order("created_at DESC")
-         end
+        #  unless UserInfo.where("school_name LIKE ?", "%#{params[:school]}%").nil? && User.where("gender LIKE ?", "%#{params[:gender]}%").nil?
+        #     @select = UserInfo.search(params[:school]).order("created_at DESC")
+        #  end
          
       
             

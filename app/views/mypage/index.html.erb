@@ -48,11 +48,12 @@
           <a class="nav-link" data-toggle="tab" href="#school" role="tab" aria-controls="school">긱사 룸메 찾음!</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#settings" role="tab" aria-controls="settings">개인정보 수정</a>
+          <a class="nav-link" data-toggle="tab" href="#settings" role="tab" aria-controls="settings">기본 인적사항 입력하기</a>
         </li>
       </ul> 
     
         <div class="tab-content mt-4">
+          
             <div class="tab-pane active" id="haveroom" role="tabpanel">
                 <div id="first">
                   <h1>유형 검사 하러 가시겠습니까?</h1>
@@ -73,6 +74,7 @@
             
             <div class="tab-pane" id="school" role="tabpanel">
               <% if @u_info.where(:user_id => current_user.id).take.nil? %>
+              
                 <form class="form-inline" action="/mypage/create" method="post">
                       <input type="hidden" name="category" value="school">
                       <label class="mr-sm-2" for="inlineFormCustomSelect">학교 고르기</label>
@@ -81,19 +83,61 @@
                         <option value="경희대학교(서울)">경희대학교(서울)</option>
                         <option value="서울과기대">서울과기대</option>
                       </select>
+                      
+                    <div class="custom-controls-stacked">
+                        <span>성별</span>
+                      <label class="custom-control custom-radio">
+                        <input id="radioStacked1" name="gender" type="radio" class="custom-control-input" value="남자">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">남자</span>
+                      </label>
+                      <label class="custom-control custom-radio">
+                        <input id="radioStacked2" name="gender" type="radio" class="custom-control-input" value="여자">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">여자</span>
+                      </label>
+                    </div>
+            
+                    <div class="form-group row">
+                      <label for="example-date-input" class="col-2 col-form-label">생년월일</label>
+                      <div class="col-10">
+                        <input class="form-control" type="date" value="2011-08-19" id="example-date-input" name="age">
+                      </div>
+                    </div>
+            
+                      <div class="custom-controls-stacked">
+                        <label class="custom-control custom-radio">
+                          <input id="radioStacked1" name="a" type="radio" class="custom-control-input" value='집순이'>
+                          <span class="custom-control-indicator"></span>
+                          <span class="custom-control-description">나는 집순이다.</span>
+                        </label>
+                        <label class="custom-control custom-radio">
+                          <input id="radioStacked2" name="a" type="radio" class="custom-control-input" value='역마살이'>
+                          <span class="custom-control-indicator"></span>
+                          <span class="custom-control-description">나는 싸돌아 다닌다.</span>
+                        </label>
+                      </div>
+                      
+                      <br>
                       <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
+                
               <% else %>
               <h3>내가 작성한 내용</h3>
               학교 : <%= @u_info.where(:user_id => current_user.id).take.school_name %>
-              <button type="submit" class="btn btn-primary">수정하기</button>
+              패턴 : <%= @u_info.where(:user_id => current_user.id).take.aa %>
+              나이 : <%= @u_info.where(:user_id => current_user.id).take.age %>
+              성별 : <%= @u_info.where(:user_id => current_user.id).take.gender %>
+              
+             
+                  <button id="button">수정하기</button>
+             
               <% end %>
             </div>
         
             <div class="tab-pane" id="settings" role="tabpanel">
-               <h1>삥</h1>
-            
             </div>
+            
          </div>  
         
   </div>

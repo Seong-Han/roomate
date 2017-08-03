@@ -4,20 +4,6 @@
 .content{
   margin-top: 100px;
 }
-.menu-nav {
-    width: 100%;
-    background-color:#FFD039;
-    display: inline-block;
-}
-
-.menu-nav-container{
-    width: 924px;
-    height: 50px;
-    background-color:#FFD039;
-    list-style: none;
-    text-align: center;
-}
-
 .menu-nav-list{
     float:left;
     padding: 0px 20px;
@@ -54,18 +40,58 @@ body {
 }
 /* Navigation Settings */
 nav {
-
 	width: 100%;
-	height: 70px;
-	background: #FFD039;
+	min-width: 750px;
+    height: 70px;
+	background: #BDBDBD;
 }
 nav li {
 	display: inline-block;
 	padding: 24px 10px;
+	line-height: 22px;
+	margin: 0% 3%;
 }
 nav li a {
+    font-size: 100%;
 	color: #757575;
 	text-transform: uppercase;
+	text-align: justify;
+}
+nav li a:hover{
+    font-size: 120%;
+    color: #FFFFFF;
+    text-decoration:none;
+}
+
+.main-nav{
+    background-color: #FFD039;
+    list-style: none;
+    display:flex;
+    padding: 1% 0%;
+    margin-bottom: 0px;
+    
+}
+
+.main-nav li:first-child {
+    margin-right:auto;
+}
+
+.main-nav a {
+    font-size: 16px;
+    display: block;
+    line-height: 50px;
+    padding-right: 20px;
+    vertical-align: middle;
+    color: #FFFFFF;
+}
+
+.main-nav a:hover{
+    text-decoration: none;
+    color: #FFD039;
+}
+
+#login {
+    color: #FFFFFF;
 }
 
 /* Screens Settings */
@@ -102,3 +128,175 @@ nav li a {
     opacity: 0.8;
     width: 5%;
     }
+    
+    //템플릿
+    
+    
+body,
+html {
+    min-width: 1024px;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+}
+
+.lead {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.intro-header {
+    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+    padding-bottom: 50px;
+    text-align: center;
+    color: #f8f8f8;
+    /*background: url(../img/intro-bg.jpg) no-repeat center center;*/
+    background-size: cover;
+}
+
+.intro-message {
+    position: relative;
+    padding-top: 20%;
+    padding-bottom: 20%;
+}
+
+.intro-message > h1 {
+    margin: 0;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    font-size: 5em;
+}
+
+.intro-divider {
+    width: 400px;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.intro-message > h3 {
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+}
+
+@media(max-width:767px) {
+    .intro-message {
+        padding-bottom: 15%;
+    }
+
+    .intro-message > h1 {
+        font-size: 3em;
+    }
+
+    ul.intro-social-buttons > li {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    ul.intro-social-buttons > li:last-child {
+        margin-bottom: 0;
+    }
+
+    .intro-divider {
+        width: 100%;
+    }
+}
+
+.network-name {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+.content-section-nav{
+    background-color: #FFD039;
+    font-size:2.4rem;
+	bottom: 0;
+	padding: 30px 0;
+	text-align: center;
+}
+.content-section-a {
+    padding: 50px 0;
+    background-color: #f8f8f8;
+}
+
+.content-section-b {
+    padding: 50px 0;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+    background-color: #FFFFFF;
+}
+
+.section-heading {
+    margin-bottom: 30px;
+}
+
+.section-heading-spacer {
+    float: left;
+    width: 200px;
+    border-top: 3px solid #e7e7e7;
+}
+
+.banner {
+    padding: 100px 0;
+    color: #f8f8f8;
+    /*background: url(../img/banner-bg.jpg) no-repeat center center;*/
+    background-size: cover;
+    background-color: #FFFFFF;
+}
+
+.banner h2 {
+    margin: 0;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    font-size: 3em;
+}
+
+.banner ul {
+    margin-bottom: 0;
+}
+
+.banner-social-buttons {
+    float: right;
+    margin-top: 0;
+}
+
+@media(max-width:1199px) {
+    ul.banner-social-buttons {
+        float: left;
+        margin-top: 15px;
+    }
+}
+
+@media(max-width:767px) {
+    .banner h2 {
+        margin: 0;
+        text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+        font-size: 3em;
+    }
+
+    ul.banner-social-buttons > li {
+        display: flex;
+             flex-direction: row;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    ul.banner-social-buttons > li:last-child {
+        margin-bottom: 0;
+    }
+}
+
+footer {
+    padding: 50px 0;
+    background-color: #f8f8f8;
+}
+
+p.copyright {margin: 15px 0 0;
+}
