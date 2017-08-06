@@ -76,7 +76,6 @@
               <% if @u_info.where(:user_id => current_user.id).take.nil? %>
               
                 <form class="form-inline" action="/mypage/create" method="post">
-                      <input type="hidden" name="category" value="school">
                       <label class="mr-sm-2" for="inlineFormCustomSelect">학교 고르기</label>
                       <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect" name="school">
                         <option value="경희대학교(국제)">경희대학교(국제)</option>
@@ -105,7 +104,11 @@
                       </div>
                     </div>
             
+            
+            
+            
                       <div class="custom-controls-stacked">
+                        <span>질문 1</span>
                         <label class="custom-control custom-radio">
                           <input id="radioStacked1" name="a" type="radio" class="custom-control-input" value='집순이'>
                           <span class="custom-control-indicator"></span>
@@ -123,15 +126,14 @@
                 </form>
                 
               <% else %>
-              <h3>내가 작성한 내용</h3>
-              학교 : <%= @u_info.where(:user_id => current_user.id).take.school_name %>
-              패턴 : <%= @u_info.where(:user_id => current_user.id).take.aa %>
-              나이 : <%= @u_info.where(:user_id => current_user.id).take.age %>
-              성별 : <%= @u_info.where(:user_id => current_user.id).take.gender %>
-              
-             
-                  <button id="button">수정하기</button>
-             
+                <h3>내가 작성한 내용</h3>
+                학교 : <%= @u_info.where(:user_id => current_user.id).take.school_name %>
+                패턴 : <%= @u_info.where(:user_id => current_user.id).take.aa %>
+                나이 : <%= @u_info.where(:user_id => current_user.id).take.age %>
+                성별 : <%= @u_info.where(:user_id => current_user.id).take.gender %>
+                
+                  
+                <button type="submit" class="btn btn-primary">수정하기</button>
               <% end %>
             </div>
         

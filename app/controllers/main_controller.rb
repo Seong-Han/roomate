@@ -34,6 +34,24 @@ class MainController < ApplicationController
         @user = User.all
         @u_info = UserInfo.all
         @select  = @u_info.where('school_name = ? AND gender = ? AND age >= ? AND age <= ? ', params[:school], params[:gender], params[:minage], params[:maxage])
+    end
+    
+    #작성한 글 올리고, 내리고
+    def expose
+        something = UserInfo.where(:user_id => current_user.id).take
+        something.category = params[:category]
+        something.expose = true
+        something.save
+        redirect_to "/main/school"
+    end
+    
+    def un_expose
+        something = UserInfo.where(:user_id => current_user.id).take
+        something.expose = false
+        something.save
+        redirect_to "/main/school"
+    end
+        
         # @select = Array.new
         # unless UserInfo.where("gender LIKE ?", "%#{params[:gender]}%").nil?
         #     g_search = UserInfo.where("gender LIKE ?", "%#{params[:gender]}%")     
@@ -78,8 +96,7 @@ class MainController < ApplicationController
     
         
         # @select = UserInfo.where(:school_name => params[:school]).take
-        
-    end
+
 
     
 #     def index

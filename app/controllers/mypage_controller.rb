@@ -34,7 +34,7 @@ class MypageController < ApplicationController
   def create
     something = UserInfo.new
     something.aa = params[:a]
-    something.category = params[:category]
+    
     something.school_name = params[:school]
     something.gender = params[:gender]
     something.age = params[:age]
@@ -54,6 +54,8 @@ class MypageController < ApplicationController
   #성향 업데이트
   def update
   end
+  
+
   
   def profile
     # parsed_db = Noticetitle.where("link" => each_notice.link).take

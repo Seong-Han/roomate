@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'mypage/test'
   
   get 'mypage/result'
+  
 
   devise_for :users
   
@@ -27,6 +28,10 @@ Rails.application.routes.draw do
   get 'main/haveroom'
   get 'main/nhaveroom'
   get 'main/school'
+  
+  #작성한 글 올리고, 내리고
+  post 'main/expose'
+  post 'main/un_expose'
   
   #문석형이 작업한 라우트
   get 'upload/index'

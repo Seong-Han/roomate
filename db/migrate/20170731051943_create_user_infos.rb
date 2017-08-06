@@ -8,6 +8,7 @@ class CreateUserInfos < ActiveRecord::Migration
       t.string :school_name
       t.integer :age
       t.boolean :one_time
+      t.boolean :expose
       t.timestamps null: false
     end
   end

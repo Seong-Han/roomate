@@ -10,17 +10,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-  
- 
-  
- 
-  
-
 </head>
 
 <body>
-    
-  
 <script type="text/javascript">
         $(document).ready(function () {
                $.ajax({
@@ -54,11 +46,6 @@
         
              $('#datails').text(' ');  //세번째 열을 비운다. 
            });*/
-          
-       
-       
-       
-       
             
           $('#myTab a:last').tab('show').on('click',  function(e) {
              e.preventDefault();
@@ -68,8 +55,7 @@
              
           });
           
-          
-          $('#school').on('click', '#button',  function(e) {
+          $('#haveroom').on('click', '#button',  function(e) {
             e.preventDefault();
             
             
@@ -95,7 +81,6 @@
     });
 </script>
 <!-- Navigation -->
-<!--navbar-fixed-top 요거 쓸지 말지 고민  인정-->
 
 <%= yield %>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
