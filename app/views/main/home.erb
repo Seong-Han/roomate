@@ -32,13 +32,13 @@
 	</script>
 	 <!-- 로그인 회원가입-->
     <ul class="main-nav new-user">
-                  <li><a href="#" class="logo" style="margin-top:0px"><img src="http://platum.kr/wp-content/uploads/2015/10/unnamed-12.png" height=70px ></a></li>
+                  <li><a href="#" class="logo" style="margin-top:0px"><img src="http://platum.kr/wp-content/uploads/2015/10/unnamed-12.png" height=40px ></a></li>
                 <%if current_user.nil?%>
                   <li><%= link_to '로그인', new_user_session_path %></li>
                   <li><%= link_to '회원가입', new_user_registration_path %></li>
                 <%else%>
                   
-                  <li><a href="#"> <%= current_user.name %>님 </a> </li>
+                  <li><a href="/main/home"> <%= current_user.name %>님 </a> </li>
                     
                     <li> <a href="/mypage/index/<%= current_user.id%>">마이페이지</a></li>
             
@@ -85,7 +85,7 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <!-- 네브바-->
-     <nav>
+     <nav style="background-color: #bdbdbd; margin-top: 0 !important;">
         <ul>
             <li><a href="/main/haveroom">방으로 찾기</a></li>
             <li><a href="/main/school">기숙사로 찾기</a></li>

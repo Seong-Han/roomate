@@ -9,26 +9,32 @@ class MypageController < ApplicationController
   def create
     something = UserInfo.where(:user_id => current_user.id).take
     something.aa = params[:a]
-    
-    # something.school_name = params[:school]
-    # something.gender = params[:gender]
-    # something.age = params[:age]
-    # something.user_id = current_user.id
     something.one_time = true
     something.save
     redirect_to "/mypage/index/#{current_user.id}"
   end
   
   #성향 편집
+  def type_update
+    something = UserInfo.where(:user_id => current_user.id).take
+    something.aa = params[:a]
+    something.save
+    redirect_to "/mypage/index/#{current_user.id}"
+    
+  end
+  
+  def type_edit
+    
+  end
+  
+  def type_index
+    
+  end
+  
   def edit
   end
   
-  #성향지우기
-  def delete
-  end
-  #성향 업데이트
-  def update
-  end
+ 
   
 
   
@@ -61,6 +67,10 @@ class MypageController < ApplicationController
     redirect_to '/main/home'
     
   end
+    def core_update
+      
+    end
+    
     
     def core_edit
       coreedit = UserInfo.where(:user_id => current_user.id).take

@@ -4,87 +4,109 @@
 </head>
 <script>
 $(document).ready(function() {
-        
-            $(window).on('resize load', function() {
-    $('.contentwrap').css({"padding-top": $(".navbar").height() + "px"});
+
+  function toggleSidebar() {
+    $(".button").toggleClass("active");
+    $("main").toggleClass("move-to-left");
+    $(".sidebar-item").toggleClass("active");
+  }
+
+  $(".button").on("click tap", function() {
+    toggleSidebar();
   });
+
+  $(document).keyup(function(e) {
+    if (e.keyCode === 27) {
+      toggleSidebar();
+    }
+  });
+
+});
         
-        });
 </script>
 <body>
+  
+<div class="nav-right visible-xs">
+  <div class="button" id="btn">
+    <div class="bar top"></div>
+    <div class="bar middle"></div>
+    <div class="bar bottom"></div>
+  </div>
+</div>
+<!-- nav-right -->
+<main>
 
-  <div class="contentwrap">
-  <article class="container">
-    <div class="page-header">
-	  <h1>회원가입 <small>일반회원가입</small></h1>
-    </div>
-    <form class="form-horizontal">
-    <div class="form-group">
-    <label for="inputEmail" class="col-sm-2 control-label">이메일</label>
-    <div class="col-sm-6">
-    <input type="email" class="form-control" id="inputEmail" placeholder="이메일">
-    </div>
-    </div>
-    <div class="form-group">
-    <label for="inputPassword" class="col-sm-2 control-label">비밀번호</label>
-    <div class="col-sm-6">
-    <input type="password" class="form-control" id="inputPassword" placeholder="비밀번호">
-    <p class="help-block">숫자, 특수문자 포함 8자 이상</p>
-    </div>
-    </div>
-       <div class="form-group">
-    <label for="inputPasswordCheck" class="col-sm-2 control-label">비밀번호 확인</label>
-    <div class="col-sm-6">
-    <input type="password" class="form-control" id="inputPasswordCheck" placeholder="비밀번호 확인">
-      <p class="help-block">비밀번호를 한번 더 입력해주세요.</p>
-    </div>
-    </div>
-    <div class="form-group">
-    <label for="inputRipple" class="col-sm-2 control-label">리플주소</label>
-    <div class="col-sm-6">
-    <input type="text" class="form-control" id="inputRipple" placeholder="리플주소">
-    </div>
-    </div>
-    <div class="form-group">
-    <label for="inputName" class="col-sm-2 control-label">이름</label>
-    <div class="col-sm-6">
-    <input type="text" class="form-control" id="inputName" placeholder="이름">
-    </div>
-    </div>
-    <div class="form-group">
-    <label for="inputNumber" class="col-sm-2 control-label">휴대폰번호</label>
-    <div class="col-sm-4">
-    <input type="text" class="form-control" id="inputNumber" placeholder="휴대폰번호">
-      <p class="help-block">- 없이 적어주세요.</p>
-    </div>
-      <div class="col-sm-2">
-      <a class="btn btn-default" href="#" role="button">인증번호 전송</a>
+
+  <nav>
+    <div class="nav-right hidden-xs">
+      <div class="button" id="btn">
+        <div class="bar top"></div>
+        <div class="bar middle"></div>
+        <div class="bar bottom"></div>
       </div>
     </div>
-    <div class="form-group">
-    <label for="inputNumberCheck" class="col-sm-2 control-label">인증번호 확인</label>
-    <div class="col-sm-6">
-    <input type="text" class="form-control" id="inputNumberCheck" placeholder="이름">
-    <p class="help-block">전송된 인증번호를 입력해주세요.</p>
+    <!-- nav-right -->
+  </nav>
+  <div class="container">
+    <div class="contentwrap">
+      <article class="container">
+      <div class="ppage-header">
+	      <h2 class="col-sm-6 ">회원가입</h2><br><br>
+	      <hr class="linee">
+      </div>
+     
+       <div class="form-horizontal offset-3">
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                <%= devise_error_messages! %>
+              
+                <div class="form-group">
+                  <label for="inputEmail" class="col-sm-2 control-label" style="text-align: left;">이메일</label>
+                  <div class="col-sm-6">
+                  <%= f.email_field :email, autofocus: true, class: "form-control" , placeholder: "likelion@likelion"%>
+                  <p class="help-block">입력한 이메일로 인증메일이 발송됩니다.</p>
+                  <p class="help-block">반드시 사용중인 이메일주소를 입력해주세요. 비밀번호 분실 시 이메일을 통해 재설정이 가능합니다.</p>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="inputPassword" class="col-sm-2 control-label" style="text-align: left;">비밀번호</label>
+                  <div class="col-sm-6">
+                      <% if @minimum_password_length %>
+                      <% end %>
+                      <%= f.password_field :password, autocomplete: "비밀번호 6자리 이상", class: "form-control", placeholder: "6자리 이상" %>
+                  </div>
+                </div>
+                                
+                <div class="form-group">
+                  <label for="inputPasswordCheck" class="col-sm-2 control-label" style="text-align: left;">비밀번호 확인</label>
+                  <div class="col-sm-6">
+                  <%= f.password_field :password_confirmation, autocomplete: "off",class: "form-control", placeholder: "비밀번호 확인"  %>
+                  </div>
+                </div>
+          
+                
+                <div class="form-group">
+                  <label for="inputName" class="col-sm-2 control-label" style="text-align: left;">이름</label>
+                  <div class="col-sm-6">
+                  <%= f. text_field :name, autofocus: true, class: "form-control", placeholder: "이름을 입력해주세요" %>
+                  </div>
+                </div>
+                
+    
+                  <div class="form-group">
+                  <label for="inputName" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-6">
+                      <button type="submit" class="btn btn-primary">회원가입</button>
+                    </div>
+                  </div>
+             
+              <% end %>
+     
+     
+     
+      </article>
     </div>
-    </div>
-      <div class="form-group">
-    <label for="inputAgree" class="col-sm-2 control-label">약관 동의</label>
-    <div class="col-sm-6 checkbox">
-      <label>
-        <input id="agree" type="checkbox"> <a href="/agreement"> 이용약관</a>에 동의합니다.
-    </label>
-    </div>
-    </div>
-    <div class="form-group">
-    <label for="inputName" class="col-sm-2 control-label"></label>
-    <div class="col-sm-6">
-      <button type="submit" class="btn btn-primary">회원가입</button>
-    </div>
-    </div>
-    </form>
-  </article>
-</div>
+  </div>
 <footer class="footer" id="page_footer">
       <div class="container">
         <center>
@@ -92,45 +114,21 @@ $(document).ready(function() {
         </center>
       </div>
 </footer>
-  <div class="offset-4 col-4">
-    <h2>회원가입</h2>
-          <br>
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <%= devise_error_messages! %>
-          
-            <div class="form-input">
-              <%= f.label :가입메일 %>
-              <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "likelion@likelion"%>
-            </div>
-            
-            <div class="form-input">
-              (<%= @minimum_password_length %>글자 이상!) <%= f.label :비밀번호 %>
-              <% if @minimum_password_length %>
-              <% end %>
-              <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-            </div>
-                            
-            <div class="form-input">
-              <%= f.label :비밀번호_확인 %>
-              <%= f.password_field :password_confirmation, autocomplete: "off",class: "form-control" %>
-            </div>
-      
-             
-            <div class="form-input">
-              <%= f.label :이름 %>
-              <%= f. text_field :name, autofocus: true, class: "form-control" %>
-            </div>
-</body>
-            
-           
-            
-            
-           
-          
-            <button type="submit" class="btn btn-primary mt-3">회원 가입</button>
-          <% end %>
-          
-          <%= render "devise/shared/links" %>
-          </div>
+</main>
+
+    <div class="sidebar">
+      <ul class="sidebar-list">
+        <li class="sidebar-item"><a href="#" class="sidebar-anchor">Item 1</a></li>
+        <li class="sidebar-item"><a href="#" class="sidebar-anchor">Item 2</a></li>
+        <li class="sidebar-item"><a href="#" class="sidebar-anchor">Item 3</a></li>
+        <li class="sidebar-item"><a href="#" class="sidebar-anchor">Item 4</a></li>
+      </ul>
+    </div>
+
+
+  
+  
     </div>
 </div>
+
+</body>

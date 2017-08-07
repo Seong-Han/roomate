@@ -5,15 +5,21 @@ Rails.application.routes.draw do
   get '/mypage/index/:current_user_id' => 'mypage#index'
   
   post 'mypage/profile'
+  
+  
+  
+  #성향 업데이트 및 올리기
+  get 'mypage/type_index'
+  post 'mypage/type_update'
+  get 'mypage/type_edit'
   post 'mypage/create'
-  post 'mypage/setting_create'
-  # post 'mypage/school_create'
-
+  
   get 'mypage/edit'
 
   get 'mypage/delete'
 
   post 'mypage/update'
+  
   
   get 'mypage/test'
   
@@ -24,6 +30,7 @@ Rails.application.routes.draw do
   get 'mypage/core_index'
   post 'mypage/core_create'
   post 'mypage/core_edit'
+  get 'mypage/core_update'
   
 
   

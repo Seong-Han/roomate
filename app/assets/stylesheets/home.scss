@@ -13,12 +13,43 @@
     margin: 1rem auto;
 }
 
-#image{
-    width: 9rem;
+.name{
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 0.6rem;
+}
+
+.layout{
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap : wrap;
+  margin: 0 auto;
+  max-width: 980px;
+  min-height: 488px;
 }
 
 .card{
-    width: 30rem;
+  float: left;
+  margin-bottom: 2rem;
+  padding: 10px;
+  width: 33.3%;
+}
+
+@media all and (max-width: 768px) {
+  .card{
+    width: 50%;
+  }
+        
+}
+@media all and (min-width: 769px) and (max-width: 1000px) {
+  .card{
+    width: 33.3%;
+  }
+}
+@media all and (min-width: 1001px) {
+  .card{
+    width:25%;
+  }      
 }
 
 .img{
@@ -32,6 +63,7 @@
 
 .search_list{
   margin: 1rem auto;
+  display: flex;
 }
 .custom-select{
   height: 3rem;
@@ -130,6 +162,7 @@ body {
 }
 /* Navigation Settings */
 nav {
+  padding-top: 0;
 	width: 100%;
 	min-width: 750px;
     height: 70px;
@@ -156,7 +189,7 @@ nav li a:hover{
 
 //맨위의 로고네브바
 .content{
-  margin-top: 100px;
+  margin-top: 80px;
 }
 .main-nav{
     background-color: #FFD039;
@@ -173,7 +206,7 @@ nav li a:hover{
 .main-nav a {
     font-size: 16px;
     display: block;
-    line-height: 50px;
+    line-height: 70px;
     padding-right: 20px;
     vertical-align: middle;
     color: #FFFFFF;
@@ -181,7 +214,7 @@ nav li a:hover{
 
 .main-nav a:hover{
     text-decoration: none;
-    color: #FFD039;
+    color: #F08827;
 }
 
 @media only screen and (max-width: 520px) {
@@ -197,6 +230,7 @@ nav li a:hover{
 }
 
 //사진
+
 
     //템플릿
     

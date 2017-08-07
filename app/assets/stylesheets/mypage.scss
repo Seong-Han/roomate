@@ -5,23 +5,30 @@
 box-sizing: border-box;
 }
 
-.allbox{
-    display: flex;
+// .allbox{
+//     display: flex;
     
+// }
+
+.top-box{
+    display: flex;
+    justify-content: center;
 }
+.box{
+    margin: auto 2rem;
+}
+
+
+// 프로필  사진 관련 css
 .card-img-top {
-    height: 25rem;
-    width: 25rem;
-    margin: 0 auto;
+    width: 100%;
+    margin: auto;
 }
 
 #image{
-    width: 9rem;
+    width: 9.8rem;
 }
 
-.card{
-    width: 30rem;
-}
 
 .img{
     width: 30rem;
