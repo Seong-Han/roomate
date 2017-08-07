@@ -3,42 +3,17 @@ class MypageController < ApplicationController
   def index
     @u_info = UserInfo.all
     @school_info = School.all
-    
-    # if @u_info.where(:user_id => current_user.id).take.one_time.nil
-    #   @u_info.where(:user_id => current_user.id).take.one_time = false
-    #   @u_info.save
-    # end
   end
   
-  #성향 만들기
-  # def school_create
-  #   something = School.new
-  #   something.category = params[:category]
-  #   something.school_name = params[:school]
-  #   something.user_id = current_user.id
-  #   something.one_time = true
-  #   something.save
-  #   redirect_to "/mypage/index/#{current_user.id}"
-  # end
-    def setting_create
-      u_info = UserInfo.all
-      user = User.all
-      setting = u_info.where(:user_id => current_user.id).take.gender
-      setting.each do |s|
-        s.gender = params[:gender]
-        s.save
-      redirect_to "/mypage/index/#{current_user.id}"   
-      end
-    end
     
   def create
-    something = UserInfo.new
+    something = UserInfo.where(:user_id => current_user.id).take
     something.aa = params[:a]
     
-    something.school_name = params[:school]
-    something.gender = params[:gender]
-    something.age = params[:age]
-    something.user_id = current_user.id
+    # something.school_name = params[:school]
+    # something.gender = params[:gender]
+    # something.age = params[:age]
+    # something.user_id = current_user.id
     something.one_time = true
     something.save
     redirect_to "/mypage/index/#{current_user.id}"
@@ -70,4 +45,31 @@ class MypageController < ApplicationController
   def result
     @result=UserInfo.all
   end
+  
+  #기본적인 인적사항 입력하는 창
+  def core_index
+    
+  end
+  
+  def core_create
+    corenew = UserInfo.new
+    corenew.user_id = current_user.id
+    corenew.gender = params[:gender]
+    corenew.age = params[:age]
+    corenew.school_name = params[:school]
+    corenew.save
+    redirect_to '/main/home'
+    
+    end
+    
+    def core_edit
+      coreedit = UserInfo.where(:user_id => current_user.id).take
+      coreedit.gender = params[:gender]
+      coreedit.age = params[:age]
+      coreedit.school_name = params[:school]
+      coreedit.save
+      redirect_to "/mypage/index/#{current_user.id}"
+    
+    end
+    
 end

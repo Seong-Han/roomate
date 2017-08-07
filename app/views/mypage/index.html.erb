@@ -39,16 +39,16 @@
   <div class="container info ml-4">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" data-toggle="tab" href="#haveroom" role="tab" aria-controls="haveroom">사람 없음!</a>
+          <a class="nav-link active" data-toggle="tab" href="#haveroom" role="tab" aria-controls="haveroom">지울거임(ajax코드만 살리고)</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#nhaveroom" role="tab" aria-controls="nhaveroom">방 찾음!</a>
+          <a class="nav-link" data-toggle="tab" href="#nhaveroom" role="tab" aria-controls="nhaveroom">쪽지함으로 할까?</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#school" role="tab" aria-controls="school">긱사 룸메 찾음!</a>
+          <a class="nav-link" data-toggle="tab" href="#school" role="tab" aria-controls="school">유형 파악하기</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#settings" role="tab" aria-controls="settings">기본 인적사항 입력하기</a>
+          <a class="nav-link" data-toggle="tab" href="#settings" role="tab" aria-controls="settings">회원정보 수정</a>
         </li>
       </ul> 
     
@@ -73,40 +73,9 @@
             </div>
             
             <div class="tab-pane" id="school" role="tabpanel">
-              <% if @u_info.where(:user_id => current_user.id).take.nil? %>
+              <% if @u_info.where(:user_id => current_user.id).take.one_time == nil %>
               
                 <form class="form-inline" action="/mypage/create" method="post">
-                      <label class="mr-sm-2" for="inlineFormCustomSelect">학교 고르기</label>
-                      <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect" name="school">
-                        <option value="경희대학교(국제)">경희대학교(국제)</option>
-                        <option value="경희대학교(서울)">경희대학교(서울)</option>
-                        <option value="서울과기대">서울과기대</option>
-                      </select>
-                      
-                    <div class="custom-controls-stacked">
-                        <span>성별</span>
-                      <label class="custom-control custom-radio">
-                        <input id="radioStacked1" name="gender" type="radio" class="custom-control-input" value="남자">
-                        <span class="custom-control-indicator"></span>
-                        <span class="custom-control-description">남자</span>
-                      </label>
-                      <label class="custom-control custom-radio">
-                        <input id="radioStacked2" name="gender" type="radio" class="custom-control-input" value="여자">
-                        <span class="custom-control-indicator"></span>
-                        <span class="custom-control-description">여자</span>
-                      </label>
-                    </div>
-            
-                    <div class="form-group row">
-                      <label for="example-date-input" class="col-2 col-form-label">생년월일</label>
-                      <div class="col-10">
-                        <input class="form-control" type="date" value="2011-08-19" id="example-date-input" name="age">
-                      </div>
-                    </div>
-            
-            
-            
-            
                       <div class="custom-controls-stacked">
                         <span>질문 1</span>
                         <label class="custom-control custom-radio">
@@ -127,17 +96,49 @@
                 
               <% else %>
                 <h3>내가 작성한 내용</h3>
-                학교 : <%= @u_info.where(:user_id => current_user.id).take.school_name %>
+               학교 : <%= @u_info.where(:user_id => current_user.id).take.school_name %>
                 패턴 : <%= @u_info.where(:user_id => current_user.id).take.aa %>
                 나이 : <%= @u_info.where(:user_id => current_user.id).take.age %>
-                성별 : <%= @u_info.where(:user_id => current_user.id).take.gender %>
-                
-                  
+                성별 : <%= @u_info.where(:user_id => current_user.id).take.gender %> 
                 <button type="submit" class="btn btn-primary">수정하기</button>
               <% end %>
             </div>
         
             <div class="tab-pane" id="settings" role="tabpanel">
+              
+            <form class="form-inline" action="/mypage/core_edit" method="post">
+                              <label class="mr-sm-2" for="inlineFormCustomSelect">학교 고르기</label>
+                              <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect" name="school">
+                                <option value="경희대학교(국제)">경희대학교(국제)</option>
+                                <option value="경희대학교(서울)">경희대학교(서울)</option>
+                                <option value="서울과기대">서울과기대</option>
+                              </select>
+                              
+                              
+                            <div class="custom-controls-stacked">
+                                <span>성별</span>
+                              <label class="custom-control custom-radio">
+                                <input id="radioStacked1" name="gender" type="radio" class="custom-control-input" value="남자">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">남자</span>
+                              </label>
+                              <label class="custom-control custom-radio">
+                                <input id="radioStacked2" name="gender" type="radio" class="custom-control-input" value="여자">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">여자</span>
+                              </label>
+                            </div>
+                    
+                            <div class="form-group row">
+                              <label for="example-date-input" class="col-2 col-form-label">생년월일</label>
+                              <div class="col-10">
+                                <input class="form-control" type="date" value="2011-08-19" id="example-date-input" name="age">
+                              </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">수정하기</button>
+        </form>
+                
             </div>
             
          </div>  

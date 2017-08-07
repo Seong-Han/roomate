@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+   devise_for :users, :controllers => { :registrations => "registrations" } 
   #마이페이지 라우트
   # get '/choice/write/:current_user_id' => 'choice#write'
   get '/mypage/index/:current_user_id' => 'mypage#index'
@@ -19,8 +19,14 @@ Rails.application.routes.draw do
   
   get 'mypage/result'
   
+  
+  #기본적인 인적사항 만들기
+  get 'mypage/core_index'
+  post 'mypage/core_create'
+  post 'mypage/core_edit'
+  
 
-  devise_for :users
+  
   
   #핵심 네브바, 유형별로 탐색하는 거
   root 'main#home'

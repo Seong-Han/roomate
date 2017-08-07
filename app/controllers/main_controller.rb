@@ -46,7 +46,7 @@ class MainController < ApplicationController
     end
     
     def un_expose
-        something = UserInfo.where(:user_id => current_user.id).take
+        something = UserInfo.where(:user_id => current_user.id).take 
         something.expose = false
         something.save
         redirect_to "/main/school"

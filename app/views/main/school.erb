@@ -1,6 +1,5 @@
 <div class="container">
-  
-  <form class="form-inline" action="/main/school">
+  <form class="form-inline" action="/main/school" >
      <label class="mr-sm-2" for="inlineFormCustomSelect">학교</label>
                   <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect" name="school">
                     <option selected>대학교 선택</option>
@@ -37,13 +36,13 @@
 
 <div class="container  mt-5">
   
-    <% if @u_info.where(:user_id => current_user.id).take.expose == nil or @u_info.where(:user_id => current_user.id).take.expose == false %>
+    <% if @u_info.where(:user_id => current_user.id).take.expose.nil || @u_info.where(:user_id => current_user.id).take.expose.false %>
         <form action="/main/expose" method="post">
           <input type="hidden" name="category" value="school">
           <button type="submit" class="btn btn-success">내 정보 올리기</button>
         </form>
         
-    <% else @u_info.where(:user_id => current_user.id).take.expose == true %>
+    <% else @u_info.where(:user_id => current_user.id).take.expose.true %>
         <form action="/main/un_expose" method="post">
           <button type="submit" class="btn btn-success">내 정보 내리기</button>
         </form>

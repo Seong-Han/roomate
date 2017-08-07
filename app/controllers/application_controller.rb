@@ -14,4 +14,6 @@ class ApplicationController < ActionController::Base
   def authenticate
     redirect_to :new_user_session if !user_signed_in?
   end
+  
+  
 end
