@@ -60,7 +60,7 @@ class MypageController < ApplicationController
     corenew.save
     redirect_to '/main/home'
     
-    end
+  end
     
     def core_edit
       coreedit = UserInfo.where(:user_id => current_user.id).take

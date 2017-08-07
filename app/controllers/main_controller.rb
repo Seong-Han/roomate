@@ -33,7 +33,7 @@ class MainController < ApplicationController
     def school
         @user = User.all
         @u_info = UserInfo.all
-        @select  = @u_info.where('school_name = ? AND gender = ? AND age >= ? AND age <= ? ', params[:school], params[:gender], params[:minage], params[:maxage])
+        @select  = @u_info.where('school_name = ? AND gender = ? AND age >= ? AND age <= ?', params[:school], params[:gender], params[:minage], params[:maxage])
     end
     
     #작성한 글 올리고, 내리고

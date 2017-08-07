@@ -1,14 +1,32 @@
 // Place all the styles related to the mypage controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+*{
+box-sizing: border-box;
+}
 
 .allbox{
     display: flex;
     
 }
 .card-img-top {
-    height:300px;
-    width:300px;
+    height: 25rem;
+    width: 25rem;
     margin: 0 auto;
 }
 
+#image{
+    width: 9rem;
+}
+
+.card{
+    width: 30rem;
+}
+
+.img{
+    width: 30rem;
+}
+.input_image{
+    display: flex;
+    justify-content: space-between;
+}

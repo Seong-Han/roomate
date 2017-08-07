@@ -1,3 +1,42 @@
+// 검색바
+.search_bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 1rem 3rem;
+  border: 1px solid black;
+  }
+  
+.card-img-top {
+    height: 25rem;
+    width: 25rem;
+    margin: 1rem auto;
+}
+
+#image{
+    width: 9rem;
+}
+
+.card{
+    width: 30rem;
+}
+
+.img{
+    width: 30rem;
+}
+  
+  
+.gender_box{
+  display: flex;
+}
+
+.search_list{
+  margin: 1rem auto;
+}
+.custom-select{
+  height: 3rem;
+}
+
 
 //이거슨 카러셀//
 .carousel-fade .carousel-inner .item {

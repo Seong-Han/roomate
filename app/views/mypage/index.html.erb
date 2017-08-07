@@ -23,15 +23,15 @@
 
 <div class="container allbox mt-5">
   <!--여기가 프로필사진나오는 부분-->
-  <div class="card" style="width: 23rem;">
+  <div class="card" >
     <img class="card-img-top" src="<%= current_user.image %>" alt="Card image cap">
     <div class="card-block">
       <h4 class="card-title"><%= current_user.name %></h4>
-      <p class="card-text">여기는 생각좀 해보고..밑에 프로필 사진 업로드 하는 버튼을 다른 곳에 넣을까? </p>
-       <%= form_tag mypage_profile_path, method: 'post', multipart: true do %>
-         <%= file_field_tag 'image' %><br>
-         <%= submit_tag '제출' %>
-       <% end %>
+      <p class="card-text">뭐넣지?</p>
+      <%= form_tag mypage_profile_path, method: 'post', multipart: true, :class => "input_image" do %>
+         <%= file_field_tag 'image', :class => "btn btn-primary" %>
+         <%= submit_tag '업로드 하기', :class => "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 
@@ -96,7 +96,7 @@
                 
               <% else %>
                 <h3>내가 작성한 내용</h3>
-               학교 : <%= @u_info.where(:user_id => current_user.id).take.school_name %>
+                학교 : <%= @u_info.where(:user_id => current_user.id).take.school_name %>
                 패턴 : <%= @u_info.where(:user_id => current_user.id).take.aa %>
                 나이 : <%= @u_info.where(:user_id => current_user.id).take.age %>
                 성별 : <%= @u_info.where(:user_id => current_user.id).take.gender %> 
