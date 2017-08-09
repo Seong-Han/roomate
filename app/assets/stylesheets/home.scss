@@ -6,34 +6,24 @@
   margin: 1rem 3rem;
   border: 1px solid black;
   }
+
+//이미지 카드 부분 
   
 .card-img-top {
-    height: 25rem;
-    width: 25rem;
-    margin: 1rem auto;
-}
-
-.name{
-  margin-top: auto;
-  margin-bottom: auto;
-  margin-right: 0.6rem;
-}
-
-.layout{
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap : wrap;
-  margin: 0 auto;
-  max-width: 980px;
-  min-height: 488px;
+    height: 20rem;
+    width: 90%;
+    margin: 1rem 1rem;
 }
 
 .card{
   float: left;
   margin-bottom: 2rem;
+  // margin-left: 3rem;
+  // margin-right: 2rem;
   padding: 10px;
   width: 33.3%;
 }
+
 
 @media all and (max-width: 768px) {
   .card{
@@ -52,10 +42,30 @@
   }      
 }
 
-.img{
-    width: 30rem;
-}
+// .img{
+//     width: 30rem;
+// }
   
+
+
+
+.name{
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 0.6rem;
+}
+
+.layout{
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap : wrap;
+  margin: 0 auto;
+  max-width: 980px;
+  min-height: 488px;
+}
+
+
+
   
 .gender_box{
   display: flex;
@@ -120,8 +130,8 @@
   font-size: 30px;
   font-family: 'Lato', sans-serif;
 }
-    html,
-    body,
+    // html,
+    // body,
     .carousel,
     .carousel-inner,
     .carousel-inner .item {

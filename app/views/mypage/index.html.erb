@@ -8,8 +8,20 @@
 
   <link href="assets/mypage.scss" rel="stylesheet">
 </haed>
+<main>
 
-<div class="container allbox mt-5">
+
+  <nav>
+    <div class="nav-right hidden-xs">
+      <div class="button" id="btn">
+        <div class="bar top"></div>
+        <div class="bar middle"></div>
+        <div class="bar bottom"></div>
+      </div>
+    </div>
+    <!-- nav-right -->
+  </nav>
+<div class="container allbox mt-5 ">
   <div class="top-box">
       <div class="box" >
         <h2><%= current_user.name %></h2>
@@ -20,17 +32,11 @@
       
       <!--여기가 프로필사진나오는 부분-->
       <div class="box">
-          <div class="card" style="margin:0 auto;">
-              <img class="card-img-top" src="<%= current_user.image %>" alt="Card image cap">
-              <div class="card-block">
-                <h4 class="card-title"><%= current_user.name %></h4>
-                <p class="card-text">뭐넣지?</p>
+              <img class="box_img" src="<%= current_user.image %>" alt="프로필 사진을 업로드 하세요">
                 <%= form_tag mypage_profile_path, method: 'post', multipart: true, :class => "input_image" do %>
                    <%= file_field_tag 'image' %>
                    <%= submit_tag '업로드 하기', :class => "btn btn-primary" %>
                 <% end %>
-              </div>
-          </div>
       </div>
       
       <div class="box">
@@ -48,13 +54,23 @@
       </div>
   </div>
   
-  \
+  
   <h2 class="col-sm-6 ">쪽지함</h2><br><br>
   <hr class="linee">
   
   
         
 </div>
+
+</main>
+  <div class="sidebar">
+      <ul class="sidebar-list">
+        <li class="sidebar-item"><a href="#" class="sidebar-anchor">Item 1</a></li>
+        <li class="sidebar-item"><a href="#" class="sidebar-anchor">Item 2</a></li>
+        <li class="sidebar-item"><a href="#" class="sidebar-anchor">Item 3</a></li>
+        <li class="sidebar-item"><a href="#" class="sidebar-anchor">Item 4</a></li>
+      </ul>
+    </div>
 
 <script>
     // /*$(function () {
@@ -69,5 +85,23 @@
     //     $('#first').remove();
     //     $('#haveroom').load('test.html').hide().fadeIn('slow');
     //   });*/
+$(document).ready(function() {
 
+  function toggleSidebar() {
+    $(".button").toggleClass("active");
+    $("main").toggleClass("move-to-left");
+    $(".sidebar-item").toggleClass("active");
+  }
+
+  $(".button").on("click tap", function() {
+    toggleSidebar();
+  });
+
+  $(document).keyup(function(e) {
+    if (e.keyCode === 27) {
+      toggleSidebar();
+    }
+  });
+
+});
 </script>
