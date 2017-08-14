@@ -18,7 +18,9 @@ class MainController < ApplicationController
     #  @posts = Model.where("title LIKE ?", "%#{params[:query]}%")
     # end
         @user = User.all
+        @users = User.where(:id => params[:user_id]).take
         @serach = UserInfo.all
+        
         if params[:search]
             @search = UserInfo.search(params[:search]).order("created_at DESC")
         else

@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   post 'mypage/core_edit'
   get 'mypage/core_update'
   
+  
 
   
   
@@ -50,6 +51,12 @@ Rails.application.routes.draw do
   get 'upload/index'
   get 'upload/write'
   post 'upload/create'
+  
+  #쪽지 라우트 
+  get '/chat/:user_id' => 'mypage#chat' 
+  post '/chat/:user_id/mypage/message' => 'mypage#message'
+  
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

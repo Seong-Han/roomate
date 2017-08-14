@@ -1,3 +1,26 @@
+.form-horizontal{
+  margin: 0 auto;
+  display: inline-block;
+}
+#page_footer {
+height: 60px;
+background: #f5f5f5;
+}
+.footer_text{
+margin: 20px 0;
+color: #777;
+}
+.help-block{
+    text-align: left;
+    font-size: 1.25rem;
+}
+.linee{
+    border-top: 2px solid #000;
+    width: 58%;
+}
+h2{
+    margin-left: 10px;
+}
 //사이드 메뉴
 @import url(https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic);
 body,

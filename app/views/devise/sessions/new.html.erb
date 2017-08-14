@@ -22,6 +22,7 @@ $(document).ready(function() {
 
 });
 </script>
+<body>
 <main>
 
 
@@ -39,7 +40,7 @@ $(document).ready(function() {
   
 <div class="container">
 <div class="contentwrap">
-  <article class="container">
+<article class="container">
   <div class="ppage-header">
     <h2 class="col-sm-6 ">로그인</h2><br><br>
     <hr class="linee">
@@ -49,28 +50,32 @@ $(document).ready(function() {
                 
               
                 <div class="form-group">
+                  
                   <label for="inputEmail" class="col-sm-2 control-label" style="text-align: left;">이메일</label>
-                  <div class="col-sm-6">
-                  <%= f.email_field :email, autofocus: true, class: "form-control" %>
+                  <div class="col-sm-8">
+                  <%= f.email_field :email, autofocus: true, class: "form-control" , placeholder: "likelion@likelion"%>
+                  <p class="help-block">반드시 사용중인 이메일주소를 입력해주세요. 비밀번호 분실 시 이메일을 통해 재설정이 가능합니다.</p>
+                  <p class="help-block">회원가입시 만든 이메일주소를 입력해주세요. </p>
                   </div>
                 </div>
                 
+                 
+
                 <div class="form-group">
                   <label for="inputPassword" class="col-sm-2 control-label" style="text-align: left;">비밀번호</label>
-                  <div class="col-sm-6">
+                  <div class="col-sm-8">
                      <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
                   </div>
                 </div>
                 
                 <div class="form-group">
-                  <label for="inputName" class="col-sm-2 control-label"></label>
-                    <div class="col-sm-6">
-                        <% if devise_mapping.rememberable? -%>
+                    <div class="col-sm-8">
+                        <% if devise_mapping.rememberable? %>
                     <div class="form-input">
                         <%= f.check_box :remember_me %>
                         <%= f.label :기억하기 %>
                     </div>
-                        <% end -%>
+                        <% end %>
                     </div>
                 </div>
     
@@ -80,8 +85,7 @@ $(document).ready(function() {
                       <button type="submit" class="btn btn-primary">로그인</button>
                     </div>
                  </div>
-    
-    
+
     
               <% end %>
     
@@ -90,6 +94,15 @@ $(document).ready(function() {
 
 </div>
 </div>
+
+<footer class="footer" id="page_footer">
+      <div class="container">
+        <center>
+        <p class="footer_text">이용약관 | 개인정보 취급방침 | 자주 묻는 질문 | 수수료</p>
+        </center>
+      </div>
+</footer>
+
 </main>
 
 
@@ -101,3 +114,4 @@ $(document).ready(function() {
     <li class="sidebar-item"><a href="#" class="sidebar-anchor">Item 4</a></li>
   </ul>
 </div>
+</body>

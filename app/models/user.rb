@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
     after_save :store_previous_changes_for_image
     after_commit :remove_previously_stored_image, on: :update
     
+    has_many :conversations, :foreign_key => :sender_id
+    
   def  self . search ( search ) 
   where("gender LIKE ?", "%#{search}%" )  
   end 

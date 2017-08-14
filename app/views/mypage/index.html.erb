@@ -21,41 +21,54 @@
     </div>
     <!-- nav-right -->
   </nav>
+
+
 <div class="container allbox mt-5 ">
   <div class="top-box">
-      <div class="box" >
-        <h2><%= current_user.name %></h2>
+      <div class="left-box" >
+        <h2 style="text-align: rigth;"><%= current_user.name %></h2>
         <p><%= @u_info.where(:user_id => current_user.id).take.age %>년생</p>
         <p><%= @u_info.where(:user_id => current_user.id).take.school_name %></p>
         <button type="submit" class="btn btn-primary" onclick="location.href='/mypage/core_update' ">수정하기</button>
       </div>
       
       <!--여기가 프로필사진나오는 부분-->
-      <div class="box">
+      <div class="cen-box">
               <img class="box_img" src="<%= current_user.image %>" alt="프로필 사진을 업로드 하세요">
                 <%= form_tag mypage_profile_path, method: 'post', multipart: true, :class => "input_image" do %>
                    <%= file_field_tag 'image' %>
                    <%= submit_tag '업로드 하기', :class => "btn btn-primary" %>
                 <% end %>
       </div>
-      
-      <div class="box">
+      <div class="right-box">
         <% if @u_info.where(:user_id => current_user.id).take.one_time == nil %>
                 <button type="submit" class="btn btn-primary" onclick="location.href='/mypage/type_index'">입력하러 가기</button>
                
-                
               <% else %>
-                
-                    <h2><%= @u_info.where(:user_id => current_user.id).take.aa %>형</h2>
+      
+                    <h2 style="text-align: left;"><%= @u_info.where(:user_id => current_user.id).take.aa %>형</h2>
                     <button type="submit" class="btn btn-primary" onclick="location.href='/mypage/type_edit'">수정하기</button>
                 
               <% end %>
-        
+      
       </div>
   </div>
   
   
   <h2 class="col-sm-6 ">쪽지함</h2><br><br>
+  
+     <h1><%= current_user.id %>의 채팅방, 여기서 채팅방들을 보여줄거야</h1>
+
+
+     <% @chat1.each do |x| %>
+       <h3><a href = "/chat/<%= x.recipient_id %>"> <%= x.recipient_id %>과의 채팅방 </a></h3><br>
+     <% end %>
+ 
+  
+  
+     <% @chat2.each do |x| %>
+       <h3><a href = "/chat/<%= x.sender_id %>"><%= x.sender_id %>과의 채팅방</a></h3><br>
+     <% end %>
   <hr class="linee">
   
   

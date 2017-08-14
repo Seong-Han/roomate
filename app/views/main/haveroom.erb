@@ -6,3 +6,9 @@
   </form>
 
 </div>
+
+<div class="container">
+  <% @user.each do |x| %>
+    <a href="/chat/<%= x.id %>"><h3><%= x.id %> 한테 쪽지보내기 </h3></a>
+  <% end %>
+</div>

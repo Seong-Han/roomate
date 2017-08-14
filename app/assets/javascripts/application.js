@@ -13,16 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
- 
-   $(document).ready(function () {
-               $.ajax({
-                  beforeSend: function(xhr) {     //요청을 전송하기전에 실행
-                   if(xhr.overrideMimeType)  {    //지원되면
-                     xhr.overrideMimeType("application/json")
-                     //오류 방지하기 위해 MIME 타입설정
-                   }
-                 }
-               });    
+
+
+       
+
+                 
            
            /*$('#content').on('click', '#event a', function(e) {  //행사클릭
           
@@ -47,7 +42,7 @@
              $('#datails').text(' ');  //세번째 열을 비운다. 
            });*/
             
-          $('#myTab a:last').tab('show').on('click',  function(e) {
+          /*$('#myTab a:last').tab('show').on('click',  function(e) {
              e.preventDefault();
              $('#myTab a.current').removeClass('current'); //현재메뉴수정
              $(this).addClass('current');
@@ -86,5 +81,8 @@
           });      
            
           
-    });
 
+
+   $('#myModal').on('shown.bs.modal', function () {
+      $('#myInput').focus()
+    })*/
