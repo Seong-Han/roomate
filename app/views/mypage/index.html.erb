@@ -1,120 +1,172 @@
-<haed>
+<!DOCTYPE HTML>
+<html>
+  <head>
+    
+    <link href="mypage.scss" rel="stylesheet" type="text/css">
+    
+    <script>
+      // 마이페이지 네비게이션바 에이젝스
+   $(function(){
+       $("#my_propose").click(function(){
+         $.ajax({
+             type: 'get' , 
+             url: '/mypage/my_propose' ,
+             dataType : 'html' ,
+             success: function(data) {
+               $("#listDiv").html(data);
+               }
+             });
+       })
+       
+       $("#other_propose").click(function(){
+         $.ajax({
+             type: 'get' , 
+             url: '/mypage/other_propose' ,
+             dataType : 'html' ,
+             success: function(data) {
+               $("#listDiv").html(data);
+               }
+             });
+       })
+       
+       
+   })
 
-  <script>
 
+   
+   
+       
+      $(document).ready(function() {
+      
+        function toggleSidebar() {
+          $(".button").toggleClass("active");
+          $("main").toggleClass("move-to-left");
+          $(".sidebar-item").toggleClass("active");
+        }
+      
+        $(".button").on("click tap", function() {
+          toggleSidebar();
+        });
+      
+        $(document).keyup(function(e) {
+          if (e.keyCode === 27) {
+            toggleSidebar();
+          }
+        });
+      
+      });
+      
+    
+    </script>
   
-  </script>
-
-
-  <link href="assets/mypage.scss" rel="stylesheet">
-</haed>
-<main>
-
-
-  <nav>
-    <div class="nav-right hidden-xs">
-      <div class="button" id="btn">
-        <div class="bar top"></div>
-        <div class="bar middle"></div>
-        <div class="bar bottom"></div>
+  
+    
+    
+  </head>
+  
+  <main>
+    
+  
+  
+    <nav>
+      <div class="nav-right hidden-xs">
+        <div class="button" id="btn">
+          <div class="bar top"></div>
+          <div class="bar middle"></div>
+          <div class="bar bottom"></div>
+        </div>
       </div>
+      <!-- nav-right -->
+    </nav>
+  
+  
+    <div class="container allbox mt-5 ">
+      
+      <div class="top-box">
+          <div class="left-box" >
+            <h2 style="text-align: rigth;"><%= current_user.name %></h2>
+            <p><%= @u_info.where(:user_id => current_user.id).take.age %>년생</p>
+            <p><%= @u_info.where(:user_id => current_user.id).take.school_name %></p>
+            <button type="submit" class="btn btn-primary" onclick="location.href='/mypage/core_update' ">수정하기</button>
+          </div>
+          
+          <!--여기가 프로필사진나오는 부분-->
+          <div class="cen-box">
+                  <img class="box_img" src="<%= current_user.image %>" alt="프로필 사진을 업로드 하세요">
+                    <%= form_tag mypage_profile_path, method: 'post', multipart: true, :class => "input_image" do %>
+                       <%= file_field_tag 'image' %>
+                       <%= submit_tag '업로드 하기', :class => "btn btn-primary" %>
+                    <% end %>
+          </div>
+          <div class="right-box">
+            <% if @u_info.where(:user_id => current_user.id).take.one_time == nil %>
+                    <button type="submit" class="btn btn-primary" onclick="location.href='/mypage/type_index'">입력하러 가기</button>
+                   
+                  <% else %>
+          
+                        <h2 style="text-align: left;"><%= @u_info.where(:user_id => current_user.id).take.aa %>형</h2>
+                        <button type="submit" class="btn btn-primary" onclick="location.href='/mypage/type_edit'">수정하기</button>
+                    
+                  <% end %>
+          
+          </div>
+      </div>
+      
+      <!-- 네브바 -->
+      <div class="container mypage_list">
+        <input type="button" id="my_propose" class="only_text" value="룸메 신청 현황" /> <br/> 
+        <input type="button" id="other_propose" class="only_text" value="룸메 대기 현황" /> <br/> 
+        <input type="button" id="my_propose" class="only_text" value="쪽지함" /> <br/> 
+      </div>
+      <hr class="linee">
+      <div id="listDiv"></div>
+      
+      
+      <br>
+      <br>
+      <br>
+      
+      <h2 class="col-sm-6 ">쪽지함</h2><br><br>
+      
+         <h1><%= current_user.id %>의 채팅방, 여기서 채팅방들을 보여줄거야</h1>
+    
+    
+         <% @chat1.each do |x| %>
+           <h3><a href = "/chat/<%= x.recipient_id %>"> <%= x.recipient_id %>과의 채팅방 </a></h3><br>
+         <% end %>
+     
+      
+      
+         <% @chat2.each do |x| %>
+           <h3><a href = "/chat/<%= x.sender_id %>"><%= x.sender_id %>과의 채팅방</a></h3><br>
+         <% end %>
+      <hr class="linee">
+      
+      
+            
     </div>
-    <!-- nav-right -->
-  </nav>
-
-
-<div class="container allbox mt-5 ">
-  <div class="top-box">
-      <div class="left-box" >
-        <h2 style="text-align: rigth;"><%= current_user.name %></h2>
-        <p><%= @u_info.where(:user_id => current_user.id).take.age %>년생</p>
-        <p><%= @u_info.where(:user_id => current_user.id).take.school_name %></p>
-        <button type="submit" class="btn btn-primary" onclick="location.href='/mypage/core_update' ">수정하기</button>
+  
+  </main>
+     <div class="sidebar">
+         <ul class="main-nav new-user">
+                  <li><img src="http://platum.kr/wp-content/uploads/2015/10/unnamed-12.png" class="img-circle" height=40px  style="margin-top:10px">
+                    <img src="" ></li>
+                <%if current_user.nil?%>
+                  <li><%= link_to '로그인', new_user_session_path %></li>
+                  <li><%= link_to '회원가입', new_user_registration_path %></li>
+                <%else%>
+                  
+                  <li><a href="/main/home"> <%= current_user.name %>님 </a> </li>
+                    
+                    <li> <a href="/mypage/index/<%= current_user.id%>">마이페이지</a></li>
+            
+                  <li><%= link_to('Logout', destroy_user_session_path, method: :get) %> </li>
+                <%end%>
+                </ul>
+                <div>
+                  <p></p>
+                </div>
       </div>
-      
-      <!--여기가 프로필사진나오는 부분-->
-      <div class="cen-box">
-              <img class="box_img" src="<%= current_user.image %>" alt="프로필 사진을 업로드 하세요">
-                <%= form_tag mypage_profile_path, method: 'post', multipart: true, :class => "input_image" do %>
-                   <%= file_field_tag 'image' %>
-                   <%= submit_tag '업로드 하기', :class => "btn btn-primary" %>
-                <% end %>
-      </div>
-      <div class="right-box">
-        <% if @u_info.where(:user_id => current_user.id).take.one_time == nil %>
-                <button type="submit" class="btn btn-primary" onclick="location.href='/mypage/type_index'">입력하러 가기</button>
-               
-              <% else %>
-      
-                    <h2 style="text-align: left;"><%= @u_info.where(:user_id => current_user.id).take.aa %>형</h2>
-                    <button type="submit" class="btn btn-primary" onclick="location.href='/mypage/type_edit'">수정하기</button>
-                
-              <% end %>
-      
-      </div>
-  </div>
   
   
-  <h2 class="col-sm-6 ">쪽지함</h2><br><br>
-  
-     <h1><%= current_user.id %>의 채팅방, 여기서 채팅방들을 보여줄거야</h1>
-
-
-     <% @chat1.each do |x| %>
-       <h3><a href = "/chat/<%= x.recipient_id %>"> <%= x.recipient_id %>과의 채팅방 </a></h3><br>
-     <% end %>
- 
-  
-  
-     <% @chat2.each do |x| %>
-       <h3><a href = "/chat/<%= x.sender_id %>"><%= x.sender_id %>과의 채팅방</a></h3><br>
-     <% end %>
-  <hr class="linee">
-  
-  
-        
-</div>
-
-</main>
-  <div class="sidebar">
-      <ul class="sidebar-list">
-        <li class="sidebar-item"><a href="#" class="sidebar-anchor">Item 1</a></li>
-        <li class="sidebar-item"><a href="#" class="sidebar-anchor">Item 2</a></li>
-        <li class="sidebar-item"><a href="#" class="sidebar-anchor">Item 3</a></li>
-        <li class="sidebar-item"><a href="#" class="sidebar-anchor">Item 4</a></li>
-      </ul>
-    </div>
-
-<script>
-    // /*$(function () {
-    //   $('#myTab a:last').tab('show');
-      
-    // });
-  
-    // $('#comments-link').on('click', function(e) {
-    //     e.preventDefault();
-        
-      
-    //     $('#first').remove();
-    //     $('#haveroom').load('test.html').hide().fadeIn('slow');
-    //   });*/
-$(document).ready(function() {
-
-  function toggleSidebar() {
-    $(".button").toggleClass("active");
-    $("main").toggleClass("move-to-left");
-    $(".sidebar-item").toggleClass("active");
-  }
-
-  $(".button").on("click tap", function() {
-    toggleSidebar();
-  });
-
-  $(document).keyup(function(e) {
-    if (e.keyCode === 27) {
-      toggleSidebar();
-    }
-  });
-
-});
-</script>
+</html>

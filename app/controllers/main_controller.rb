@@ -53,6 +53,15 @@ class MainController < ApplicationController
         something.save
         redirect_to "/main/school"
     end
+    
+    def propose
+        new_propose = Propose.new
+        # 룸메 신청 숫자 제한되게 만들어야함
+        new_propose.user_id = current_user.id
+        new_propose.other_id = params[:other_id]
+        new_propose.save
+        redirect_to :back
+    end
         
         # @select = Array.new
         # unless UserInfo.where("gender LIKE ?", "%#{params[:gender]}%").nil?

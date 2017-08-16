@@ -1,4 +1,5 @@
 class MypageController < ApplicationController
+  
   #마이페이지 첫화면
   def index
     @u_info = UserInfo.all
@@ -19,7 +20,10 @@ class MypageController < ApplicationController
       end 
   end
   
-    
+  #여기서 create로 넘어감
+  def type_index
+  end
+    #회원가입하면서 처음 넘어갈 때 성향 저장하는 곳
   def create
     something = UserInfo.where(:user_id => current_user.id).take
     something.aa = params[:a]
@@ -28,7 +32,12 @@ class MypageController < ApplicationController
     redirect_to "/mypage/index/#{current_user.id}"
   end
   
-  #성향 편집
+  
+  #타입 업데이트로 넘어감
+  def type_edit
+    
+  end
+  #나중에 성향 수정하는 거
   def type_update
     something = UserInfo.where(:user_id => current_user.id).take
     something.aa = params[:a]
@@ -37,17 +46,69 @@ class MypageController < ApplicationController
     
   end
   
-  def type_edit
+  
+  
+
+  
+  def profile
+    # parsed_db = Noticetitle.where("link" => each_notice.link).take
+    newimage = User.where(:id => current_user.id).take
+    newimage.image = params[:image]
+    newimage.save
+    # Post.create(content: params[:content].
+    #                     image: params[:image])
+    redirect_to :back
+  end
+  
+  #기본적인 인적사항 입력하는 창
+  def core_index
+    
+  end
+  # 기본 인적사항 생성하는 거 
+  def core_create
+    corenew = UserInfo.new
+    corenew.user_id = current_user.id
+    corenew.gender = params[:gender]
+    corenew.age = params[:age]
+    corenew.school_name = params[:school]
+    corenew.save
+    redirect_to '/main/home'
+    
+  end
+  # 기본 인적사항 업뎃
+  def core_update
     
   end
   
-  def type_index
+  # 업뎃 넘어간다.
+  def core_edit
+    coreedit = UserInfo.where(:user_id => current_user.id).take
+    coreedit.gender = params[:gender]
+    coreedit.age = params[:age]
+    coreedit.school_name = params[:school]
+    coreedit.save
+    redirect_to "/mypage/index/#{current_user.id}"
+  
+  end
+  
+
+  def my_propose
+        @user = User.all
+        @u_info = UserInfo.all
+      if Propose.where(:user_id => current_user.id).nil?
+          @nothing = "등록한 룸메이트가 없습니다."
+      else
+          @my_propose = Propose.where(:user_id => current_user.id).take
+      end
+      
+  end
+  
+  def other_propose
+  end
+  
     
-  end
-  
-  def edit
-  end
-  
+    
+    
   def chat
      @users = User.where(:id => params[:user_id]).take
       
@@ -67,58 +128,13 @@ class MypageController < ApplicationController
       #@message = Message.where(:message_id => @id).take
       @message = @conversation.messages.new(message_params)
       @message.body = params[:body]
-      @message.save
+      
       @messages = @conversation.messages
       @messages1 = @messages.where(:user_id => current_user.id) #이게 보낸 메세지
       @messages2 = @messages.where(:user_id => params[:user_id]) #이게 받은 메세지
   end
  
-  
-
-  
-  def profile
-    # parsed_db = Noticetitle.where("link" => each_notice.link).take
-    newimage = User.where(:id => current_user.id).take
-    newimage.image = params[:image]
-    newimage.save
-    # Post.create(content: params[:content].
-    #                     image: params[:image])
-    redirect_to :back
-  end
-  
-  def result
-    @result=UserInfo.all
-  end
-  
-  #기본적인 인적사항 입력하는 창
-  def core_index
     
-  end
-  
-  def core_create
-    corenew = UserInfo.new
-    corenew.user_id = current_user.id
-    corenew.gender = params[:gender]
-    corenew.age = params[:age]
-    corenew.school_name = params[:school]
-    corenew.save
-    redirect_to '/main/home'
-    
-  end
-    def core_update
-      
-    end
-    
-    
-    def core_edit
-      coreedit = UserInfo.where(:user_id => current_user.id).take
-      coreedit.gender = params[:gender]
-      coreedit.age = params[:age]
-      coreedit.school_name = params[:school]
-      coreedit.save
-      redirect_to "/mypage/index/#{current_user.id}"
-    
-    end
     
   def message
      
@@ -156,9 +172,18 @@ class MypageController < ApplicationController
              @messages = @conversation.messages
              
              #"orders_count = ?", params[:orders]
-             @messages1 = @messages.where(:user_id => current_user.id) #이게 보낸 메세지
-             @messages2 = @messages.where(:user_id => params[:user_id]) #이게 받은 메세지
-             
+            
+            if  @messages.where(:user_id => current_user.id).take.nil?
+                @messages1=[]
+            else 
+                @messages1 = @messages.where(:user_id => current_user.id)
+            end
+            
+            if  @messages.where(:user_id => params[:user_id]).take.nil?
+                @messages2=[]
+            else 
+                @messages2 = @messages.where(:user_id => params[:user_id])
+            end
              
           
           

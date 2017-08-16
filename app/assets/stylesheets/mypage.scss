@@ -4,11 +4,24 @@
 *{
 box-sizing: border-box;
 }
-
-// .allbox{
-//     display: flex;
-    
-// }
+// 마이페이지 인덱스 네비게이션 바
+ .allbox > .mypage_list {
+  margin: 4rem auto 0rem auto;
+  width: 58%;
+  display: flex;
+  justify-content: space-around;
+}
+.allbox >.linee {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.only_text{
+  background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    font-size: 3rem;
+}
 
 
 .top-box{

@@ -14,16 +14,10 @@ Rails.application.routes.draw do
   get 'mypage/type_edit'
   post 'mypage/create'
   
-  get 'mypage/edit'
-
-  get 'mypage/delete'
-
-  post 'mypage/update'
+  #마이페이지 밑에 네비게이션바
+  get 'mypage/my_propose'
+  get 'mypage/other_propose'
   
-  
-  get 'mypage/test'
-  
-  get 'mypage/result'
   
   
   #기본적인 인적사항 만들기
@@ -42,6 +36,9 @@ Rails.application.routes.draw do
   get 'main/haveroom'
   get 'main/nhaveroom'
   get 'main/school'
+  
+  #룸메 신청하기
+  post 'main/propose'
   
   #작성한 글 올리고, 내리고
   post 'main/expose'
