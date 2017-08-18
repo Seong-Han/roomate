@@ -5,7 +5,10 @@ class MypageController < ApplicationController
     @u_info = UserInfo.all
     
     @user = User.all
+    
     @m_propose = Propose.where(:user_id => current_user.id)
+    
+    @other_propose = Propose.where(:other_id => current_user.id)
     #@chat = Conversation.all
       
      # if  @chat.where(:sender_id => current_user.id).take.nil?
@@ -97,14 +100,12 @@ class MypageController < ApplicationController
         @user = User.all
         @u_info = UserInfo.all
            
-        # if Propose.where(:user_id => current_user.id) == nil
-        #     @nothing = "등록한 룸메이트가 없습니다."
-        # else
-        # @m_propose = Propose.find_by user_id: current_user.id
+        if Propose.where(:user_id => current_user.id) == nil
+            @nothing = "등록한 룸메이트가 없습니다."
+        else
             @m_propose = Propose.where(:user_id => current_user.id)
-        # end
+        end
       respond_to do |format|
-          #format.html { redirect_to "/mypage/index/#{current_user.id}" }
           format.js
       end
       
@@ -120,11 +121,30 @@ class MypageController < ApplicationController
   end
   
   def other_propose
+      @user = User.all
+      @u_info = UserInfo.all
+      
+      @other_propose = Propose.where(:other_id => current_user.id)
+      
       respond_to do |format|
           #format.html { redirect_to "/mypage/index/#{current_user.id}" }
           format.js
       end
   end
+  
+  def propose_reject
+      one_reject = Propose.where(:user_id => params[:user_id], :other_id => current_user.id).take
+      one_reject.destroy
+      redirect_to :back
+  end
+  
+  def propose_success
+      one_success = Propose.where(:user_id => params[:user_id], :other_id => current_user.id).take
+      one_success.okay = true
+      one_success.save
+      redirect_to :back
+  end
+  
   
   def all_chat
     @u_info = UserInfo.all
@@ -164,6 +184,9 @@ class MypageController < ApplicationController
             @messages = @conversation.messages 
             @messages1 = @messages.where(:user_id => current_user.id)
             @messages2 = @messages.where(:user_id => params[:user_id])
+         else 
+            @messages1 = []
+            @messages2 = []
          end 
             
          #else

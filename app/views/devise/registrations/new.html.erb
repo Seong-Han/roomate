@@ -1,62 +1,16 @@
 <head>
-  <link href="assets/sign-up.scss" rel="stylesheet">
+  <link href="sign-up.scss" type="text/css">
   <script src="https://use.fontawesome.com/09bbfa620e.js"></script>
 </head>
-<script>
-$(document).ready(function() {
-
-  function toggleSidebar() {
-    $(".button").toggleClass("active");
-    $("main").toggleClass("move-to-left");
-    $(".sidebar-item").toggleClass("active");
-  }
-
-  $(".button").on("click tap", function() {
-    toggleSidebar();
-  });
-
-  $(document).keyup(function(e) {
-    if (e.keyCode === 27) {
-      toggleSidebar();
-    }
-  });
-
-});
-        
-</script>
 <body>
-  
-<div class="nav-right visible-xs">
-  <div class="button" id="btn">
-    <div class="bar top"></div>
-    <div class="bar middle"></div>
-    <div class="bar bottom"></div>
-  </div>
-</div>
-<!-- nav-right -->
-<main>
-
-
-  <nav>
-    <div class="nav-right hidden-xs">
-      <div class="button" id="btn">
-        <div class="bar top"></div>
-        <div class="bar middle"></div>
-        <div class="bar bottom"></div>
-      </div>
-    </div>
-    <!-- nav-right -->
-  </nav>
-  
-  
+   
   <div class="container">
     <div class="contentwrap">
-      <article class="container">
       <div class="ppage-header">
-	      <h2 class="col-sm-6">회원가입</h2><br><br>
-	      <hr class="linee">
+	     <p class="hheader">회원가입</p>
+	      
       </div>
-     
+      <hr class="linee">
        <div class="form-horizontal offset-3">
               <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
                 <%= devise_error_messages! %>
@@ -106,7 +60,7 @@ $(document).ready(function() {
      
      
       </div>
-      </article>
+      
     </div>
   </div>
 <footer class="footer" id="page_footer">
@@ -116,19 +70,3 @@ $(document).ready(function() {
         </center>
       </div>
 </footer>
-</main>
-
-    <div class="sidebar">
-      <ul class="sidebar-list">
-        <li class="sidebar-item"><a href="#" class="sidebar-anchor">Item 1</a></li>
-        <li class="sidebar-item"><a href="#" class="sidebar-anchor">Item 2</a></li>
-        <li class="sidebar-item"><a href="#" class="sidebar-anchor">Item 3</a></li>
-        <li class="sidebar-item"><a href="#" class="sidebar-anchor">Item 4</a></li>
-      </ul>
-    </div>
-
-
-  
-  
-
-</body>

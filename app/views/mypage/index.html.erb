@@ -1,16 +1,36 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600,700,800' rel='stylesheet' type='text/css'>    
-    <link href="mypage.scss" rel="stylesheet" type="text/css">
+    
+    <link href="mypage.scss" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600,700,800' type='text/css'>
     
     <script>
-      // 통합 모달 스크립트
+    $(document).ready(function() {
+      
+        function toggleSidebar() {
+          $(".button").toggleClass("active");
+          $("main").toggleClass("move-to-left");
+          $(".sidebar-item").toggleClass("active");
+        }
+      
+        $(".button").on("click tap", function() {
+          toggleSidebar();
+        });
+      
+        $(document).keyup(function(e) {
+          if (e.keyCode === 27) {
+            toggleSidebar();
+          }
+        });
+      
+      });    
+  /*    // 통합 모달 스크립트
 // Get the modal
 var modal = document.getElementById('myModal');
 
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+var btn = document.getElementById("mybtn");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
@@ -31,8 +51,7 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
-    
-    
+   
     
       // 마이페이지 네비게이션바 에이젝스
    $(function(){
@@ -59,33 +78,10 @@ window.onclick = function(event) {
        })
        
        
-   })
+   })  */
+//사이드 메뉴
 
-
-   
-   
-       
-      $(document).ready(function() {
-      
-        function toggleSidebar() {
-          $(".button").toggleClass("active");
-          $("main").toggleClass("move-to-left");
-          $(".sidebar-item").toggleClass("active");
-        }
-      
-        $(".button").on("click tap", function() {
-          toggleSidebar();
-        });
-      
-        $(document).keyup(function(e) {
-          if (e.keyCode === 27) {
-            toggleSidebar();
-          }
-        });
-      
-      });
-      
-    
+ 
     </script>
   
   
@@ -96,7 +92,7 @@ window.onclick = function(event) {
   <main>
     <nav>
       <div class="nav-right hidden-xs">
-        <div class="button" id="btn">
+        <div class="button" id="btnn">
           <div class="bar top"></div>
           <div class="bar middle"></div>
           <div class="bar bottom"></div>
@@ -104,28 +100,31 @@ window.onclick = function(event) {
       </div>
       <!-- nav-right -->
     </nav>
+    
   
   
-    <div class="container allbox mt-5 ">
+    <div class="container allbox" style="margin-top:3rem">
       
       <div class="top-box">
           <div class="left-box" >
             <h2 style="text-align: rigth;"><%= current_user.name %></h2>
             <p><%= @u_info.where(:user_id => current_user.id).take.age %>년생</p>
             <p><%= @u_info.where(:user_id => current_user.id).take.school_name %></p>
-            <button type="submit" class="btn btn-primary" onclick="location.href='/mypage/core_update'">수정하기</button>
+            <button type="submit" class="btn btn-primary" onclick="location.href='/mypage/core_update' ">수정하기</button>
           </div>
           
           <!--여기가 프로필사진나오는 부분-->
           <div class="cen-box">
+                
                   <img class="box_img" src="<%= current_user.image %>" alt="프로필 사진을 업로드 하세요">
                     <%= form_tag mypage_profile_path, method: 'post', multipart: true, :class => "input_image" do %>
                        <%= file_field_tag 'image' %>
-                       <%= submit_tag '업로드 하기', :class => "btn btn-primary" %>
+                       <%= submit_tag '업로드 하기', :class => "btn profile_btn" %>
                     <% end %>
           </div>
           <div class="right-box">
             <% if @u_info.where(:user_id => current_user.id).take.one_time == nil %>
+                     <h4 style="text-align: left; margin-left:0px; font-weight:bold">유형검사 하세요!</h4>
                     <button type="submit" class="btn btn-primary" onclick="location.href='/mypage/type_index'">입력하러 가기</button>
                    
                   <% else %>
@@ -140,12 +139,9 @@ window.onclick = function(event) {
       
       <!-- 네브바 -->
       <div class="container mypage_list">
-        <%= link_to "룸메 신청 현황", mypage_my_propose_path, :remote => true %>
-        <%= link_to "룸메 대기 현황", mypage_other_propose_path, :remote => true %>
-        <%= link_to "쪽지함", mypage_all_chat_path, :remote => true %>
-        <!--<input type="button" id="my_propose" class="only_text" value="룸메 신청 현황" /> <br/> 
-        <input type="button" id="other_propose" class="only_text" value="룸메 대기 현황" /> <br/> 
-        <input type="button" id="my_propose" class="only_text" value="쪽지함" /> <br/>--> 
+        <%= link_to "룸메 신청 현황", mypage_my_propose_path, :remote => true, class: "list_item only_text" %>
+        <%= link_to "룸메 대기 현황", mypage_other_propose_path, :remote => true, class: "list_item only_text" %>
+        <%= link_to "쪽지함", mypage_all_chat_path, :remote => true, class: "list_item only_text col-sm-offset-1" %>
       </div>
       <hr class="linee">
       <div id="listDiv">
@@ -158,9 +154,10 @@ window.onclick = function(event) {
       <br>
       <br>
       
-      <h2 class="col-sm-6 ">쪽지함</h2><br><br>
+      <!--<h2 class="col-sm-6 ">쪽지함</h2><br><br>-->
       
-         <h1><%= current_user.id %>의 채팅방, 여기서 채팅방들을 보여줄거야</h1>
+        <%# <h1><%= current_user.id %>
+        <!--의 채팅방, 여기서 채팅방들을 보여줄거야</h1>-->
     
     
 <!--<%#       <% @chat1.each do |x| %>
@@ -187,27 +184,26 @@ window.onclick = function(event) {
                   <li><%= link_to '로그인', new_user_session_path %></li>
                   <li><%= link_to '회원가입', new_user_registration_path %></li>
                 <%else%>
-                  
-                  <li><a href="/main/home"> <%= current_user.name %>님 </a> </li>
-                    
-                    <li> <a href="/mypage/index/<%= current_user.id%>">마이페이지</a></li>
-            
                   <li><%= link_to('Logout', destroy_user_session_path, method: :get) %> </li>
-                <%end%>
                 </ul>
           	<div class="portfoliocard">
-          	<div class="coverphoto"></div>
-          	<div class="profile_picture"></div>
-          	<div class="right_col">
-          		<h2 class="name">John Doe</h2>
-          		<h3 class="location">San Francisco, CA</h3>
-          		<ul class="contact_information">
-          			<li class="work">CEO</li>
-          			<li class="website"><a class="nostyle" href="#">www.apple.com</a></li>
-          			<li class="mail">john.doe@apple.com</li>
-          			<li class="phone">1-(732)-757-2923</li>
-          			<li class="resume"><a href="#" class="nostyle">download resume</a></li>
-          		</ul>
+          	  
+              	<div class="profile_picture">
+              	  <img class="small_img" src="<%= current_user.image %>" alt="">
+              	  <div id="bottom-head"></div>
+              	</div>
+              	
+              	
+              	<div class="right_col">
+              		<h2 class="name" onclick="location.href='/mypage/index/<%= current_user.id%>'"><%= current_user.name %></h2>
+              		<ul class="contact_information">
+              			<li class="work">CEO</li>
+              			<li class="website"><a class="nostyle" href="#">www.apple.com</a></li>
+              			<li class="mail">john.doe@apple.com</li>
+              			<li class="phone">1-(732)-757-2923</li>
+              			<li class="resume"><a href="#" class="nostyle">download resume</a></li>
+              		</ul>
+              	</div>
           	</div>
-          	</div>
-          </body>
+          	<%end%>
+

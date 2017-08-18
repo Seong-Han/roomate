@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   get 'mypage/my_propose'
   get 'mypage/propose_cancel'
   get 'mypage/other_propose'
-  get 'mypage/all_chat'
+  get 'mypage/propose_reject'
+  get 'mypage/propose_success'
+  
   
   
   
@@ -51,7 +53,8 @@ Rails.application.routes.draw do
   get 'upload/index'
   get 'upload/write'
   post 'upload/create'
-  
+  # 이거 뭔지 모르겠음 
+  get 'mypage/all_chat'
   #쪽지 라우트 
   get '/chat/:user_id' => 'mypage#chat' 
   post '/chat/:user_id/mypage/message' => 'mypage#message'

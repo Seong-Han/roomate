@@ -1,7 +1,7 @@
 <head>
     <!-- Custom CSS -->
 
-    <link href="home.scss" rel="stylesheet">
+    <link href="home.scss" type="text/css">
     <script src="https://use.fontawesome.com/09bbfa620e.js"></script>   
 </head>
 
@@ -16,9 +16,20 @@
               $('nav').removeClass('fixed');
             }
           });
+          
+          $(document).scroll(function(){
+            var top=$(this).scrollTop();
+              if(top<700){
+                var dif=1-top/700;
+                $('.carousel').css({opacity:dif});
+              }
+          });
+          
+          $('.carousel').carousel();
+          
         });
         
-        $(document).ready(function(){
+        /* $(document).ready(function(){
         $(document).scroll(function(){
         var top=$(this).scrollTop();
         if(top<700){
@@ -28,11 +39,11 @@
         })
         });
         
-        $('.carousel').carousel();
+        $('.carousel').carousel(); */
 	</script>
 	 <!-- 로그인 회원가입-->
     <ul class="main-nav new-user">
-                  <li><a href="#" class="logo" style="margin-top:0px"><img src="http://platum.kr/wp-content/uploads/2015/10/unnamed-12.png" height=40px ></a></li>
+                  <li><a href="/main/home" class="logo" style="margin:0px 22px"><img src="/assets/로고.jpg" height=80px></a></li>
                 <%if current_user.nil?%>
                   <li><%= link_to '로그인', new_user_session_path %></li>
                   <li><%= link_to '회원가입', new_user_registration_path %></li>
@@ -52,14 +63,14 @@
         <div class="carousel-inner" role="listbox">
             <div class="item active">  
                 <div class="carousel-caption">
-                  <h3>First slide label</h3>
-                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                  <h3>붕신 찾아요</h3>
+                  <p>붕신붕신붕신 붕우유신~</p>
                 </div>
             </div>
             <div class="item"> 
                 <div class="carousel-caption">
-                  <h3>Second slide label</h3>
-                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                  <h3>나랑 룸메 할래?</h3>
+                  <p>껄껄껄껄껄껄껄껄껄껄껄껄껄껄껄껄</p>
                 </div>
             </div>
             <div class="item"> 
@@ -88,6 +99,7 @@
      <nav style="background-color: #bdbdbd;">
         <ul>
             <li><a href="/main/haveroom">방으로 찾기</a></li>
+            <%= link_to "기숙사로 찾기", main_school_path %>
             <li><a href="/main/school">기숙사로 찾기</a></li>
             <li><a href="/main/nhaveroom">붕:신찾기</a></li>
             <li><a href="#">질문있어요</a></li>
@@ -157,7 +169,7 @@
 
     </div>
     <!-- /여기부터 푸터~-->
-    <div class="content-section-d" style="padding-top : 10%">
+    <!--<div class="content-section-d" style="padding-top : 10%">
     
     	<a  name="contact"></a>
     	
@@ -186,13 +198,13 @@
     
             </div>
         
-            <!-- /.container -->
+            
     
         </div>
-        <!-- /.banner -->
+        
     </div>
-        <!-- Footer -->
-    1<footer style="padding-top : 10%">
+        
+    <footer style="padding-top : 10%">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -218,9 +230,38 @@
                 </div>
             </div>
             
-    </footer>
+    </footer>-->
+    <div class="row1" style="background-color: #FBC400; color: white; height: 270px; text-align: left; padding-top:10%; ">
+            <br><br>
+            
+                <div class="col-xs-6 col-sm-4" style="text-align:left; padding-left: 5%;">
+                    <h8 style="padding-left:5%;">contact</h8><br><br><br>
+                    <a class="col-sm-4"
+                    href="https://www.facebook.com/kyungheelion/?fref=ts" target="_blank"
+                    style="width: 60px; height: 60px;">
+                        </a>
+                    <br><p class="col-sm-8" style="font-family: 'Jeju Gothic', sans-serif; font-size: 1em;">
+                        멋쟁이사자처럼 at 경희대<br>페이스북으로 문의해주세요.</p>
+                </div>
+                
+                <div class="col-xs-6 col-sm-4" style="padding-left: 7.5%; font-family: 'Jeju Gothic', sans-serif; font-size: 1em;">
+                    <h8><strong>제작 후기</strong></h8><br><br><br>
+                    <p style="text-align:left;">
+                    상원 : 냠냠냠냠<br>경학 : ? <br> 현우 : 우왕
+                    <br>수진 : 여러분 멋사하세요</p>
+                        </p>
+                </div>
+                
+                <div class="col-xs-6 col-sm-4" style="text-align:left; font-family: 'Jeju Gothic', sans-serif; font-size: 1em; padding-left: 8%;">
+                    <h8><strong>information</strong></h8><br><br><br>
+                    <p style="text-align:left;">
+                        경희대학교 국제캠퍼스<br>경기도 용인시 기흥구 덕영대로 1732
+                        <br>COPYRIGHT 2017. <br>LIKELION AT KYUNGHEE GLOBAL<br> ALL RIGHT RESERVED. </p>
+                </div>
+                
+        </div>
 </div>
-<script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+<!--<script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>-->
 </body>
 
 </html>

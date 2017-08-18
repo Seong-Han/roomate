@@ -1,19 +1,23 @@
 // Place all the styles related to the mypage controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 *{
 box-sizing: border-box;
 }
 // 마이페이지 인덱스 네비게이션 바
  .allbox > .mypage_list {
   margin: 4rem auto 0rem auto;
-  width: 58%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  
+  
 }
 .allbox >.linee {
-  margin-top: 0px;
+  margin-top: 0.6rem;
+  border: 1px solid #FFD039;
   margin-bottom: 0px;
+  width: 100%;
 }
 .only_text{
   background:none;
@@ -22,11 +26,17 @@ box-sizing: border-box;
     padding:0;
     font-size: 3rem;
 }
+.list_item{
+  font-size: 2.5rem;
+  color: black;
+}
+
 
 
 .top-box{
     display: flex;
     justify-content: center;
+    
 }
 .left-box{
     margin: auto 2rem;
@@ -39,25 +49,28 @@ box-sizing: border-box;
 .cen-box{
   margin: auto 2rem;
 }
-.box_img{
-  height: 150px;
-  width: 100px;
-}
 
 
-#image{
-    width: 9.8rem;
-}
 
 
-.box_img{
-    width: 30rem;
-}
+// 프로필 사진 박스
+
 .input_image{
     margin-top: 1rem;
     display: flex;
     justify-content: space-between;
 }
+.box_img{
+  height: 20rem;
+  width: 25rem;
+}
+#image{
+  width: 8.1rem;
+  background:none;
+    border:none;
+}
+
+
 //사이드 메뉴
 @import url(https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic);
 body,
@@ -174,7 +187,7 @@ main {
 
 nav {
   padding-top: 30px;
-  background-color: #fff;
+  background-color: #fff!important;
 }
 
 .sidebar-list {
@@ -318,7 +331,7 @@ nav {
   }
 }
 
-
+//사이드 메뉴 바디
 body{
 	background-size:100% 100%;
 }
@@ -329,12 +342,12 @@ a.nostyle{
 	margin:0;
 }
 div.portfoliocard{
+  background-color: #FFD039!important;
 	position:relative;
-	height:450px;
+	height:100%;
 	width:400px;
 	background:rgba(255,255,255,1);
-	border-radius:6px;
-	margin:10% auto;
+	margin:0 auto;
 	overflow:hidden;
 	z-index:100;
 }
@@ -351,7 +364,7 @@ div.portfoliocard div.coverphoto{
 }
 div.portfoliocard div.left_col, div.portfoliocard div.right_col{
 	float:left;
-	height:340px;
+	height:100%;
 }
 div.portfoliocard div.left_col{
 	width:0%;
@@ -363,28 +376,28 @@ div.portfoliocard div.right_col{
 	background:rgba(245,245,245,1);
 	border-left:1px solid rgba(230,230,230,1);
 	box-shadow:inset 0px 1px 1px rgba(255,255,255,0.7);
-	margin-left:-1px;
 	border-bottom-right-radius:5px;
+	padding-top: 0px;
 }
-div.portfoliocard div.profile_picture{
-	width:110px;
-	height:110px;
-	background:rgba(255,255,255,1);
-	position:absolute;
-	top:65px;
-	left:40px;
-	border-radius:100%;
-	background-image: url('http://cache.spreadshirt.net/Public/Common/images/profile-pic-placeholder_130x130.png');
-	background-size:100% 100%;
-	padding:7px;
-	border:4px solid rgba(255,255,255,1)
+.small_img{
+  width: 110px;
+	height: 110px;
+	background: rgba(255,255,255,1);
+	margin: 0 auto;
+	display: block;
+	border-radius: 100%;
+	background-size: 100% 100%;
+	padding: 0px;
+	margin-top: 35px;
+	border: 4px solid rgba(255,255,255,1)
 }
+
 div.portfoliocard div.right_col h2.name{
 	font-size:30px;
 	font-weight:300;
 	color: rgba(30,30,30,1);
 	padding:0;
-	margin:20px 10px 0px 30px;
+	margin:20px 0px 0px 0px;
 }
 div.portfoliocard div.right_col h3.location{
 	font-size:15px;
@@ -400,7 +413,7 @@ div.portfoliocard ul.contact_information{
 }
 div.portfoliocard ul.contact_information li{
 	height:25px;
-	width:180px;
+	width:60%;
 	line-height:25px;
 	font-weight:300;
 	font-size:15px;
@@ -412,6 +425,7 @@ div.portfoliocard ul.contact_information li{
 	border-bottom:1px solid rgba(0,0,0,0.1);
 	box-shadow:0px 1px 1px rgba(255,255,255,0.6);
 	cursor:default;
+	margin: 0 auto;
 }
 div.portfoliocard ul.contact_information li:before{
 	content:"";
@@ -453,4 +467,24 @@ div.portfoliocard div.follow_count{
 	font-weight:400;
 	font-size:25px;
 	color:rgba(140,140,140,1);
+}
+#bottom-head{
+  position: relative;
+  background: #FFD039;
+  height: 25px;
+}
+#bottom-head::after{
+  content: '';
+  width: 0px;
+  height: 0px;
+  display: block;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-bottom: 10px solid whitesmoke;
+  border-right: 10px solid rgba(0,0,0,0);
+  border-left: 10px solid rgba(0,0,0,0);
+  border-top: 10px solid rgba(0,0,0,0);
 }

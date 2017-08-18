@@ -1,6 +1,7 @@
 class MainController < ApplicationController
-    #메인화면
+    before_action :authenticate, only: [:propose]
     
+    #메인화면
     def home
         
     end

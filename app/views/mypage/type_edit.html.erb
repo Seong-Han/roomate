@@ -1,51 +1,47 @@
-<haed>
+<head>
+  <link href="assets/login.scss" rel="stylesheet">
+</head>
 
-  <script>
+ 
 
-  
-  </script>
-
-
-  <link href="assets/mypage.scss" rel="stylesheet">
-</haed>
-
-<div class="container allbox mt-5">
-
-                <form class="form-inline" action="/mypage/type_update" method="post">
-                      <div class="custom-controls-stacked">
-                        <span>질문 1</span>
-                        <label class="custom-control custom-radio">
-                          <input id="radioStacked1" name="a" type="radio" class="custom-control-input" value='집순이'>
-                          <span class="custom-control-indicator"></span>
-                          <span class="custom-control-description">나는 집순이다.</span>
-                        </label>
-                        <label class="custom-control custom-radio">
-                          <input id="radioStacked2" name="a" type="radio" class="custom-control-input" value='역마살이'>
-                          <span class="custom-control-indicator"></span>
-                          <span class="custom-control-description">나는 싸돌아 다닌다.</span>
-                        </label>
-                      </div>
+<div class="container">
+<div class="contentwrap">
+    <div class="ppage-header">
+      <h2 class="col-sm-7">생활 패턴</h2><br><br>
+      <hr class="linee">
+    </div>
+    
                       
-                      <br>
-                      <button type="submit" class="btn btn-primary">Submit</button>
-                 </form>
-                
-             
-        
-  </div>
-
-<script>
-    // /*$(function () {
-    //   $('#myTab a:last').tab('show');
-      
-    // });
+    <form class="form-inline col-sm-8 col-sm-offset-2" action="/mypage/type_update" method="post">
+       <div class="row">
+    <input type="radio" name="fancy-radio" id="fancy-radio-1"/>
+    <label for="fancy-radio-1">Radio</label>
+    
+    <input type="radio" name="fancy-radio" id="fancy-radio-2"/>
+    <label for="fancy-radio-2">Radio</label>
+    </div>
+      <!--<div class="form_group">-->
+      <!--    <label for="inlineFormCustomSelect" class="col-sm-9 control-label" style="text-align: left;">주로 공부하는 장소는 어디인가?</label>-->
+      <!--    <label class="custom-control custom-radio">-->
+      <!--      <input id="radioStacked1" name="a" type="radio" class="custom-control-input" value='집순이'>-->
+      <!--      <span class="custom-control-indicator"></span>-->
+      <!--      <span class="custom-control-description">방에서 한다.</span>-->
+      <!--    </label>-->
+      <!--     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+      <!--    <label class="custom-control custom-radio">-->
+      <!--      <input id="radioStacked2" name="a" type="radio" class="custom-control-input" value='역마살이'>-->
+      <!--      <span class="custom-control-indicator"></span>-->
+      <!--      <span class="custom-control-description">밖에서 한다.(카페, 도서관 등)</span>-->
+      <!--    </label>-->
+      <!--</div>-->
+      <button type="submit" class="btn btn-primary">제출</button>
+    </form>
+    
+   
+    
+    
+    
+</div>
+</div>
   
-    // $('#comments-link').on('click', function(e) {
-    //     e.preventDefault();
-        
-      
-    //     $('#first').remove();
-    //     $('#haveroom').load('test.html').hide().fadeIn('slow');
-    //   });*/
 
-</script>
