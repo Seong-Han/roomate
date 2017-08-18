@@ -1,14 +1,15 @@
-<!--<head>-->
-<!--     <link href="mypage_navigation/home.scss" rel="stylesheet">-->
-<!--</head>-->
+<head>
+     <link href="assets/home.scss" rel="stylesheet">
 
-  <div class="layout" style="padding: 0 auto">
-        <% @my_propose.each do |x|%>
+</head>
+
+
+        <% @m_propose.each do |x| %>
             <div class="card">
                 <img class="card-img-top" src="<%= @user.where(:id => x.other_id).take.image %>" alt="프로필 사진이 없습니다.">
                 <div class="card-block">
                     <h4 class="card-title"><%= @user.where(:id => x.other_id).take.name %></h4>
-                    <p class="card-text"><%= @u_info.where(:user_id => x.other_id).school_name %> </p>
+                 
                     <!-- Trigger/Open The Modal -->
                         <button id="myBtn">자세히 보기</button>
                         <!-- The Modal -->
@@ -16,16 +17,15 @@
                           <!-- Modal content -->
                               <div class="modal-content">
                                 <span class="close">&times;</span>
-                                <h3><%=  @u_info.where(:user_id => x.other_id).aa %>형</h3>
-                                신청 취소하기 버튼 만들거임
-                                <!--<form action='/main/propose' method="post">-->
-                                <%#<!--  <input type="hidden" name="other_id" value="<%=x.id%>
-                                <!--  <button  class="btn btn-primary" onclick="location.href='/main/propose'">룸메 신청하기</button>-->
-                                <!--</form>-->
+                                
+                                <form action='/mypage/propose_cancel' method="get">
+                                  <input type="hidden" name="other_id" value="<%= x.other_id %>">
+                                  <button  class="btn btn-primary" >신청 취소하기</button>
+                                </form>
+                                
                               </div>
                         </div>
                    
                 </div>
             </div>
         <% end %>
-  </div>

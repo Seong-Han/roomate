@@ -3,21 +3,22 @@ class MypageController < ApplicationController
   #마이페이지 첫화면
   def index
     @u_info = UserInfo.all
-    @school_info = School.all
     
-    @chat = Conversation.all
+    @user = User.all
+    @m_propose = Propose.where(:user_id => current_user.id)
+    #@chat = Conversation.all
       
-      if  @chat.where(:sender_id => current_user.id).take.nil?
-          @chat1=[]
-      else 
-          @chat1 = @chat.where(:sender_id => current_user.id)
-      end
+     # if  @chat.where(:sender_id => current_user.id).take.nil?
+         # @chat1=[]
+      #else 
+       #   @chat1 = @chat.where(:sender_id => current_user.id)
+      #end
       
-      if @chat.where(:recipient_id => current_user.id).take.nil?
-          @chat2=[]
-      else 
-          @chat2 = @chat.where(:recipient_id => current_user.id)
-      end 
+      #if @chat.where(:recipient_id => current_user.id).take.nil?
+       #   @chat2=[]
+      #else 
+       #   @chat2 = @chat.where(:recipient_id => current_user.id)
+      #end 
   end
   
   #여기서 create로 넘어감
@@ -91,19 +92,63 @@ class MypageController < ApplicationController
   
   end
   
-
+ #룸메 신청 관련 액션
   def my_propose
         @user = User.all
         @u_info = UserInfo.all
-      if Propose.where(:user_id => current_user.id).nil?
-          @nothing = "등록한 룸메이트가 없습니다."
-      else
-          @my_propose = Propose.where(:user_id => current_user.id).take
+           
+        # if Propose.where(:user_id => current_user.id) == nil
+        #     @nothing = "등록한 룸메이트가 없습니다."
+        # else
+        # @m_propose = Propose.find_by user_id: current_user.id
+            @m_propose = Propose.where(:user_id => current_user.id)
+        # end
+      respond_to do |format|
+          #format.html { redirect_to "/mypage/index/#{current_user.id}" }
+          format.js
       end
       
   end
   
+  
+  def propose_cancel
+    
+      one_cancel = Propose.where(:user_id => current_user.id, :other_id => params[:other_id]).take
+      one_cancel.destroy
+
+       redirect_to :back
+  end
+  
   def other_propose
+      respond_to do |format|
+          #format.html { redirect_to "/mypage/index/#{current_user.id}" }
+          format.js
+      end
+  end
+  
+  def all_chat
+    @u_info = UserInfo.all
+    @school_info = School.all
+    @user = User.all
+    
+    @chat = Conversation.all
+      
+      if  @chat.where(:sender_id => current_user.id).take.nil?
+          @chat1=[]
+      else 
+          @chat1 = @chat.where(:sender_id => current_user.id)
+      end
+      
+      if @chat.where(:recipient_id => current_user.id).take.nil?
+          @chat2=[]
+      else 
+          @chat2 = @chat.where(:recipient_id => current_user.id)
+      end 
+      
+      respond_to do |format|
+          #format.html { redirect_to "/mypage/index/#{current_user.id}" }
+          format.js
+      end
   end
   
     
@@ -115,23 +160,32 @@ class MypageController < ApplicationController
       
          if Conversation.between(current_user.id, params[:user_id]).present?
          
-            @conversation = Conversation.between(current_user.id, params[:user_id]).first
-             
-         else
-            @conversation = Conversation.new
-            @conversation.sender_id = current_user.id
-            @conversation.recipient_id = @users.id 
-            @conversation.save
-         end
-      @conversation = Conversation.between(current_user.id, params[:user_id]).take
+            @conversation = Conversation.between(current_user.id, params[:user_id]).take
+            @messages = @conversation.messages 
+            @messages1 = @messages.where(:user_id => current_user.id)
+            @messages2 = @messages.where(:user_id => params[:user_id])
+         end 
+            
+         #else
+          #  @conversation = Conversation.new
+           # @conversation.sender_id = current_user.id
+           # @conversation.recipient_id = @users.id 
+            #@conversation.save
+         #end
+      #@conversation = Conversation.between(current_user.id, params[:user_id]).take
       #@id = Conversation.between(current_user.id, params[:user_id]).take.id
       #@message = Message.where(:message_id => @id).take
-      @message = @conversation.messages.new(message_params)
-      @message.body = params[:body]
+      #@message = @conversation.messages.new(message_params)
+      #@message.body = params[:body]
       
-      @messages = @conversation.messages
-      @messages1 = @messages.where(:user_id => current_user.id) #이게 보낸 메세지
-      @messages2 = @messages.where(:user_id => params[:user_id]) #이게 받은 메세지
+      #@messages = @conversation.messages
+      
+      #@messages1 = @messages.where(:user_id => current_user.id)
+      #@messages2 = @messages.where(:user_id => params[:user_id])
+      
+            
+      
+           
   end
  
     
@@ -173,17 +227,13 @@ class MypageController < ApplicationController
              
              #"orders_count = ?", params[:orders]
             
-            if  @messages.where(:user_id => current_user.id).take.nil?
-                @messages1=[]
-            else 
-                @messages1 = @messages.where(:user_id => current_user.id)
-            end
             
-            if  @messages.where(:user_id => params[:user_id]).take.nil?
-                @messages2=[]
-            else 
-                @messages2 = @messages.where(:user_id => params[:user_id])
-            end
+            @messages1 = @messages.where(:user_id => current_user.id)
+            
+            
+            
+            @messages2 = @messages.where(:user_id => params[:user_id])
+            
              
           
           

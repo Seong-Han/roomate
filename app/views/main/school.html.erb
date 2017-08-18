@@ -153,6 +153,7 @@ window.onclick = function(event) {
                 <div class="card-block">
                     <h4 class="card-title"><%= @user.where(:id => x.user_id).take.name %></h4>
                     <p class="card-text"><%= x.school_name %> <%= x.created_at.strftime("%Y-%m-%d") %> </p>
+                    
                     <!-- Trigger/Open The Modal -->
                         <button id="myBtn">자세히 보기</button>
                         <!-- The Modal -->

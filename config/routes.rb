@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-   devise_for :users, :controllers => { :registrations => "registrations" } 
+    
   #마이페이지 라우트
   # get '/choice/write/:current_user_id' => 'choice#write'
-  get '/mypage/index/:current_user_id' => 'mypage#index'
   
+  get '/mypage/index/:current_user_id' => 'mypage#index', :as => :mypage_index
   post 'mypage/profile'
   
   
@@ -14,9 +14,11 @@ Rails.application.routes.draw do
   get 'mypage/type_edit'
   post 'mypage/create'
   
-  #마이페이지 밑에 네비게이션바
+  #마이페이지 밑에 네비게이션바(룸메 신성 관리 /삭제 /보기/ 쪽지함 )
   get 'mypage/my_propose'
+  get 'mypage/propose_cancel'
   get 'mypage/other_propose'
+  get 'mypage/all_chat'
   
   
   
@@ -25,6 +27,7 @@ Rails.application.routes.draw do
   post 'mypage/core_create'
   post 'mypage/core_edit'
   get 'mypage/core_update'
+  
   
   
 
@@ -52,6 +55,9 @@ Rails.application.routes.draw do
   #쪽지 라우트 
   get '/chat/:user_id' => 'mypage#chat' 
   post '/chat/:user_id/mypage/message' => 'mypage#message'
+  
+  
+  devise_for :users, :controllers => { :registrations => "registrations" }
   
   
   # The priority is based upon order of creation: first created -> highest priority.

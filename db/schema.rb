@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20170816014910) do
   create_table "proposes", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "other_id"
+    t.boolean  "okay"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

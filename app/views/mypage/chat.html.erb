@@ -19,13 +19,19 @@
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="home">
             <div id="message1">
+              <% if @messages2 == nil %>
+                <h1> 받은 메세지가 없습니다 </h1>
+              <% else %>
                 <%= render @messages2 %>
+              <% end %>
                 
             </div>
         </div>
         <div role="tabpanel" class="tab-pane" id="profile">
             <div id="message2">
-                <%= render @messages1 %>
+                
+                  <%= render @messages1 %>
+                
             </div>
         </div>
         <div role="tabpanel" class="tab-pane" id="messages">

@@ -1,0 +1,12 @@
+<h1><%= current_user.id %>의 채팅방, 여기서 채팅방들을 보여줄거야</h1>
+
+
+     <% @chat1.each do |x| %>
+       <h3><a href = "/chat/<%= x.recipient_id %>"> <%= x.recipient_id %>과의 채팅방 </a></h3><br>
+     <% end %>
+ 
+   
+  
+     <% @chat2.each do |x| %>
+       <h3><a href = "/chat/<%= x.sender_id %>"><%= x.sender_id %>과의 채팅방</a></h3><br>
+     <% end %>
