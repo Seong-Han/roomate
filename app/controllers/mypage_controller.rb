@@ -27,8 +27,20 @@ class MypageController < ApplicationController
   #여기서 create로 넘어감
   def type_index
   end
+  
     #회원가입하면서 처음 넘어갈 때 성향 저장하는 곳
   def create
+    something = UserInfo.where(:user_id => current_user.id).take
+    something.aa = params[:a]
+    something.one_time = true
+    something.save
+    redirect_to "/mypage/type_index2"
+  end
+  
+  def type_index2
+  end
+  
+  def create2
     something = UserInfo.where(:user_id => current_user.id).take
     something.aa = params[:a]
     something.one_time = true
@@ -46,9 +58,21 @@ class MypageController < ApplicationController
     something = UserInfo.where(:user_id => current_user.id).take
     something.aa = params[:a]
     something.save
+    redirect_to "/mypage/type_edit2"
+    
+  end
+  def type_edit2
+    
+  end
+  
+  def type_update2
+    something = UserInfo.where(:user_id => current_user.id).take
+    something.aa = params[:a]
+    something.save
     redirect_to "/mypage/index/#{current_user.id}"
     
   end
+  
   
   
   

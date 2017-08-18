@@ -43,7 +43,7 @@
 	</script>
 	 <!-- 로그인 회원가입-->
     <ul class="main-nav new-user">
-                  <li><a href="/main/home" class="logo" style="margin:0px 22px"><img src="/assets/로고.jpg" height=80px></a></li>
+                  <li><a href="/main/home" class="logo" style="margin:0px 22px"><img src="/assets/로고.jpg" height=60px></a></li>
                 <%if current_user.nil?%>
                   <li><%= link_to '로그인', new_user_session_path %></li>
                   <li><%= link_to '회원가입', new_user_registration_path %></li>
@@ -63,20 +63,14 @@
         <div class="carousel-inner" role="listbox">
             <div class="item active">  
                 <div class="carousel-caption">
-                  <h3>붕신 찾아요</h3>
-                  <p>붕신붕신붕신 붕우유신~</p>
                 </div>
             </div>
             <div class="item"> 
                 <div class="carousel-caption">
-                  <h3>나랑 룸메 할래?</h3>
-                  <p>껄껄껄껄껄껄껄껄껄껄껄껄껄껄껄껄</p>
                 </div>
             </div>
             <div class="item"> 
                 <div class="carousel-caption">
-                  <h3>Third slide label</h3>
-                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
                 </div>
             </div>
         </div>
@@ -96,28 +90,29 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <!-- 네브바-->
-     <nav style="background-color: #bdbdbd;">
+     <nav style="background-color: #bdbdbd!important;">
         <ul>
             <li><a href="/main/haveroom">방으로 찾기</a></li>
-            <%= link_to "기숙사로 찾기", main_school_path %>
             <li><a href="/main/school">기숙사로 찾기</a></li>
             <li><a href="/main/nhaveroom">붕:신찾기</a></li>
             <li><a href="#">질문있어요</a></li>
         </ul>
     </nav>
     
-    <div class="content-section-a">
+
+    <div>
         <div class="container">
             <div class="row">
-                <div class="col-lg-5 col-sm-6">
+                <div>
+                    <hr class="section-heading-spacer">
+                    <img class="img-responsive" src="/assets/main_image(1).png" style="margin-top:50px">
+                </div>
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">성한이 짱<br>Special Thanks</h2>
-                    <p class="lead">A special thanks to <a target="_blank" href="http://join.deathtothestockphoto.com/">Death to the Stock Photo</a> for providing the photographs that you see in this template. Visit their website to become a member.</p>
+                    <h2 class="section-heading">생활패턴에 따른 붕신만의 룸메이트 추천 시스템</h2>
+                    <p class="lead">룸메이트와 다른 생활패턴으로인해 힘들었던 당신을 위해<br>붕신은 생활 유형에 따른 룸메이트를 추천해줍니다. </p>
                 </div>
-                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="#" alt="">
-                </div>
+
             </div>
 
         </div>
@@ -126,20 +121,22 @@
     </div>
     <!-- /.content-section-a -->
 
-    <div class="content-section-b">
+    <div>
 
         <div class="container">
 
             <div class="row">
-                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                <div>
+                  <hr class="section-heading-spacer">
+                  <img class="img-responsive" src="/assets/main_image(2).png" alt="">
+                </div>
+                <div>
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
-                    <h2 class="section-heading">재경누나 짱<br>by PSDCovers</h2>
-                    <p class="lead">Turn your 2D designs into high quality, 3D product shots in seconds using free Photoshop actions by <a target="_blank" href="http://www.psdcovers.com/">PSDCovers</a>! Visit their website to download some of their awesome, free photoshop actions!</p>
+                    <h2 class="section-heading">상황별 유형에 따른 룸메이트 추천 시스템</h2>
+                    <p class="lead">ank" href="http://www.psdcovers.com/">PSDCovers</a>! Visit their website to download some of their awesome, free photoshop actions!</p>
                 </div>
-                <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                    <img class="img-responsive" src="#" alt="">
-                </div>
+
             </div>
 
         </div>
@@ -153,14 +150,15 @@
         <div class="container">
 
             <div class="row">
+               <div>
+                  <hr class="section-heading-spacer">
+                  <img class="img-responsive" src="/assets/main_image(3).png" alt="">
+                </div>
                 <div class="col-lg-5 col-sm-6">
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
                     <h2 class="section-heading">문석형 짱 상원형짱<br>Font Awesome Icons</h2>
                     <p class="lead">This template features the 'Lato' font, part of the <a target="_blank" href="http://www.google.com/fonts">Google Web Font library</a>, as well as <a target="_blank" href="http://fontawesome.io">icons from Font Awesome</a>.</p>
-                </div>
-                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="#" alt="">
                 </div>
             </div>
 
@@ -231,7 +229,7 @@
             </div>
             
     </footer>-->
-    <div class="row1" style="background-color: #FBC400; color: white; height: 270px; text-align: left; padding-top:10%; ">
+    <div class="row1" style="background-color: #FBC400; color: white; height: 270px; text-align: left; margin-top:5%;">
             <br><br>
             
                 <div class="col-xs-6 col-sm-4" style="text-align:left; padding-left: 5%;">

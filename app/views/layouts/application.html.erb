@@ -16,101 +16,26 @@
 
 
 
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
+   <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
   
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  
+ 
   
 </head>
 
 <body>
 
-    <!--//     $(document).ready(function () {-->
-    <!--//           $.ajax({-->
-    <!--//               beforeSend: function(xhr) {     //요청을 전송하기전에 실행-->
-    <!--//               if(xhr.overrideMimeType)  {    //지원되면-->
-    <!--//                  xhr.overrideMimeType("application/json")-->
-    <!--//                  //오류 방지하기 위해 MIME 타입설정-->
-    <!--//               }-->
-    <!--//              }-->
-    <!--//           });    -->
-           
-    <!--//       /*$('#content').on('click', '#event a', function(e) {  //행사클릭-->
-          
-    <!--//           e.preventDefault();  //페이지 이동 취소 -->
-    <!--//           var loc = this.id.toUpperCase();  //id 특성 값을 가져온다.-->
-         
-    <!--//           var newContent = ' ';    //시간표를 생성한다. -->
-    <!--//           for (var i = 0; i < times[loc].length; i++) {-->
-    <!--//             newContent += '<li><span class="time">' -->
-    <!--//                           +times[loc][i].time + '</span>';-->
-    <!--//             newContent += '<a href = "description.html#';-->
-    <!--//             newContent += times[loc][i].title.replace(/ /g, '-') = '">';-->
-    <!--//             newContent += times[loc][i].title + '</a></li>';-->
-    <!--//           }-->
-        
-    <!--//          $('#sessions').html('<ul>' + newContent + '</ul>');-->
-    <!--//          //페이지에 시간표를 출력한다-->
-        
-    <!--//          $('#event a.current').removeClass('current'); //현재메뉴수정-->
-    <!--//          $(this).addClass('current');-->
-        
-    <!--//          $('#datails').text(' ');  //세번째 열을 비운다. -->
-    <!--//       });*/-->
-            
-    <!--//       $('#myTab a:last').tab('show').on('click',  function(e) {-->
-    <!--//          e.preventDefault();-->
-    <!--//          $('#myTab a.current').removeClass('current'); //현재메뉴수정-->
-    <!--//          $(this).addClass('current');-->
-    <!--//          $('#second').remove();-->
-             
-    <!--//       });-->
-          
-          
-    <!--//     //   상원형 해브룸 코드-->
-    <!--//       $('#haveroom').on('click', '#button',  function(e) {-->
-    <!--//         e.preventDefault();-->
-            
-            
-    <!--//         $('#first').remove();-->
-    <!--//         $('#second').load('/mypage/test.html').hide().fadeIn('slow');-->
-    <!--//       });-->
-          
-        
-          
-          
-          
-          
-          
-    <!--//       $('#submit').on('click', function(e) { -->
-    <!--//           $('#second').remove();-->
-    <!--//           $.ajax({-->
-    <!--//                     type: 'POST',-->
-    <!--//                     url: "/mypage/create",-->
-    <!--//                     data: $('#come').serialize(),-->
-    <!--//               }).console.log(data)-->
-    <!--//               .done( function(data) {-->
-    <!--//                  $('#second').load('/mypage/result.html');-->
-    <!--//               }).fail( function() {-->
-    <!--//                  $('#second').html('데이터를 가져오지 못했습니다.');-->
-    <!--//           });-->
-    <!--//       });      -->
-           
-          
-    <!--// });-->
-    
-    
     
 
 <!-- Navigation -->

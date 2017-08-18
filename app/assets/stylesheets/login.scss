@@ -4,8 +4,53 @@ $blue: #0288D1;
 $darkBlue: #01579B;
 $gray: #ccc;
 
+input[type="text"] {
+    width: 50rem;
+    height: 40px;
+    padding: 10px 10px 10px 10px;
+    box-sizing: border-box;
+    border: 1px solid $gray;
+    color: #333;
+    border-radius: 3px;
+    transition: all 0.3s $custom-easing;
+  }
+  
+  
+  input[type="text"] + label {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 40px;
+    line-height: 40px;
+    font-size: 12px;
+    font-weight: bold;
+    width: 80px;
+    text-shadow: 0 0 2px rgba(0,0,0,0.1);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: white;
+    background: $blue;
+    border-radius: 3px 0 0 3px;
+    transition: all 0.3s $custom-easing;
+    transform: translateZ(0) translateX(0);
+  }
+  
+  
+  
+  input[type="text"]:focus {
+    padding-left: 10px; 
+  }
+  
+  
+  input[type="text"]:focus + label{
+    transform: translateZ(0) translateX(-100%);
+  }
 
-input[type="checkbox"], input[type="radio"] {
+
+
+input[type="radio"] {
     position: absolute;
     overflow: hidden;
     clip: rect(0 0 0 0);
@@ -48,7 +93,20 @@ input[type="checkbox"], input[type="radio"] {
       transform: translateZ(0) translate(-50%, -50%) scale(1);
     }
   }
-
+  
+  // 버튼 끝
+  
+  // 질문박스
+ .sit_question{
+   display: flex;
+   justify-content: center;
+ }
+ 
+  .big_question{
+    display: flex;
+    justify-content: space-around;
+  }
+  // 
 .form-horizontal{
   margin: 0 auto;
   display: inline-block;

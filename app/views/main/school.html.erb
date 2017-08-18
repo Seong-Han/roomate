@@ -1,24 +1,9 @@
 
-<head>
- <link href="home.scss" >
- <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-  
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  
-</head>
+<link href="school.scss" type="text/css">
 
-<body>
+
+
   
    <script>
    
@@ -51,32 +36,38 @@
   //      modal.style.display = "none";
   //  }
 //}
+$(document).ready(function() {
+      
+        function toggleSidebar() {
+          $(".button").toggleClass("active");
+          $("main").toggleClass("move-to-left");
+          $(".sidebar-item").toggleClass("active");
+        }
+      
+        $(".button").on("click tap", function() {
+          toggleSidebar();
+        });
+      
+        $(document).keyup(function(e) {
+          if (e.keyCode === 27) {
+            toggleSidebar();
+          }
+        });
+      
+      });
    </script>
-   
-    <ul class="main-nav new-user">
-                    <li><a href="#" class="logo" style="margin-top:0px"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbmRJTRsaUDnFIaIXbZQSYTyII18mUaIKIBPOS7pKmIThZ96Z0" height=70px ></a></li>
-                  <%if current_user.nil?%>
-                    <li><%= link_to '로그인', new_user_session_path %></li>
-                    <li><%= link_to '회원가입', new_user_registration_path %></li>
-                  <%else%>
-                    
-                    <li><a href="/main/home"> <%= current_user.name %>님 </a> </li>
-                      
-                      <li> <a href="/mypage/index/<%= current_user.id%>">마이페이지</a></li>
-              
-                    <li><%= link_to('Logout', destroy_user_session_path, method: :get) %> </li>
-                  <%end%>
-    </ul>
+  
+  <main>
     <nav>
-          <ul>
-              <li><a href="/main/haveroom">방으로 찾기</a></li>
-              <li><a href="/main/school">기숙사로 찾기</a></li>
-              <li><a href="/main/nhaveroom">붕:신찾기</a></li>
-              <li><a href="#">질문있어요</a></li>
-          </ul>
+      <div class="nav-right hidden-xs">
+        <div class="button" id="btnn">
+          <div class="bar top"></div>
+          <div class="bar middle"></div>
+          <div class="bar bottom"></div>
+        </div>
+      </div>
+      <!-- nav-right -->
     </nav>
-  
-  
     <form class="form-inline search_bar" action="/main/school" >
                     <div class="search_list">
                         <div class="name">
@@ -191,12 +182,12 @@
                         </button>
                         
                         <!-- Modal -->
-                        <div class="modal fade" id="myModal<%=x.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal fade" id="myModal<%=x.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel<%=x.id%>">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel"><%= @user.where(:id => x.user_id).take.name %></h4>
+                                <h4 class="modal-title" id="myModalLabel<%=x.id%>"><%= @user.where(:id => x.user_id).take.name %></h4>
                               </div>
                               <div class="modal-body">
                                 <h3><%= x.aa %>형</h3>
@@ -221,4 +212,39 @@
     
     <% end %>
   </div>
-</body>
+  </main>
+
+
+     <div class="sidebar">
+            <ul class="main-nav new-user">
+                  <li>
+                    <img src="/assets/로고.jpg" height=40px style="margin-top:10px; margin-left:10px;"></li>
+                <%if current_user.nil?%>
+                  <li><%= link_to '로그인', new_user_session_path %></li>
+                  <li><%= link_to '회원가입', new_user_registration_path %></li>
+                <%else%>
+                  <li><%= link_to('Logout', destroy_user_session_path, method: :get) %> </li>
+                <%end%>  
+            </ul>
+          	<div class="portfoliocard">
+                	<div class="profile_picture">
+                  	  <img class="small_img" src="<%#= current_user.image %>" alt="">
+                  	  <div id="bottom-head">
+                  	    
+                  	 </div>
+              	  </div>
+              	
+              	
+              	<div class="right_col">
+              		<h2 class="name" onclick="location.href='/mypage/index/<%= current_user.id%>'"><%= current_user.name %></h2>
+              		<ul class="contact_information">
+              			<li class="work">CEO</li>
+              			<li class="website"><a class="nostyle" href="#">www.apple.com</a></li>
+              			<li class="mail">john.doe@apple.com</li>
+              			<li class="phone">1-(732)-757-2923</li>
+              			<li class="resume"><a href="#" class="nostyle">download resume</a></li>
+              		</ul>
+              	</div>
+          	</div>
+     </div>
+          	

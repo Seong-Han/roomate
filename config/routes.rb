@@ -10,9 +10,16 @@ Rails.application.routes.draw do
   
   #성향 업데이트 및 올리기
   get 'mypage/type_index'
+  get 'mypage/type_index2'
+  
   post 'mypage/type_update'
+  post 'mypage/type_update2'
+  
   get 'mypage/type_edit'
+  get 'mypage/type_edit2'
+  
   post 'mypage/create'
+  post 'mypage/create2'
   
   #마이페이지 밑에 네비게이션바(룸메 신성 관리 /삭제 /보기/ 쪽지함 )
   get 'mypage/my_propose'
