@@ -220,6 +220,7 @@ nav {
 }
 nav li {
 	display: inline-block;
+	padding: 24px 10px;
 	line-height: 22px;
 	margin: 0% 3%;
 }
@@ -245,7 +246,7 @@ nav li a:hover{
     background-size: cover;
     list-style: none;
     display:flex;
-    padding: 1% 0%;
+    padding: 0% 0%;
     margin-bottom: 0px;
 }
 

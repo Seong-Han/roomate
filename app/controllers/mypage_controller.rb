@@ -32,24 +32,27 @@ class MypageController < ApplicationController
   def create
     something = UserInfo.where(:user_id => current_user.id).take
     something.aa = params[:a]
+    something.ab = params[:b]
+    something.ac = params[:c]
+    something.ad = params[:d]
     something.one_time = true
     something.save
     redirect_to "/mypage/type_index2"
   end
-  
+  #처음 상황에따른 유형검사
   def type_index2
   end
-  
+  #처음 상황에따른 유형검사 create하는 곳
   def create2
     something = UserInfo.where(:user_id => current_user.id).take
-    something.aa = params[:a]
+    
     something.one_time = true
     something.save
     redirect_to "/mypage/index/#{current_user.id}"
   end
   
   
-  #타입 업데이트로 넘어감
+  #유형검사 수정, 타입 업데이트로 넘어감
   def type_edit
     
   end
@@ -57,14 +60,19 @@ class MypageController < ApplicationController
   def type_update
     something = UserInfo.where(:user_id => current_user.id).take
     something.aa = params[:a]
+    something.ab = params[:b]
+    something.ac = params[:c]
+    something.ad = params[:d]
     something.save
     redirect_to "/mypage/type_edit2"
     
   end
+  #상황에 따른 유형검사 수정, 타입 업데이트2로 넘어감
   def type_edit2
     
   end
   
+  #ㅅ수정함
   def type_update2
     something = UserInfo.where(:user_id => current_user.id).take
     something.aa = params[:a]
@@ -242,7 +250,7 @@ class MypageController < ApplicationController
          @users = User.where(:id => params[:user_id]).take
          
           # if Conversation.all.where('(sender_id = ? AND  recipient_id= ?) OR (sender_id = ? AND  recipient_id= ?)' , current_user.id, params[:user_id], params[:user_id], current_user.id).nil?
-           #where('(conversations.sender_id = ? AND conversations.recipient_id =?) OR (conversations.sender_id = ? AND conversations.recipient_id =?)', sender_id,recipient_id, recipient_id, sender_id)
+           #where('(conversations.sender_id = ? AND  conversations.recipient_id =?) OR (conversations.sender_id = ? AND conversations.recipient_id =?)', sender_id,recipient_id, recipient_id, sender_id)
            #if Conversation.nil?
              # @conversations = Conversation.new 
              # @conversations.sender_id = current_user.id
@@ -281,13 +289,46 @@ class MypageController < ApplicationController
             
             @messages2 = @messages.where(:user_id => params[:user_id])
             
-             
+         redirect_to "/chat/#{current_user.id}"    
           
           
-         respond_to do |format|
-            format.html { redirect_to upload_create_paths }
+         
+  end
+  
+  def receipt
+      
+      if Conversation.between(current_user.id, params[:user_id]).present?
+         
+            @conversation = Conversation.between(current_user.id, params[:user_id]).first
+            @messages = @conversation.messages
+            @receipt = @messages.where(:user_id => params[:user_id]).take 
+         else
+            @receipt = []
+      end
+     
+      
+      respond_to do |format|
+            #format.html { redirect_to upload_create_paths }
             format.js
-         end
+      end
+  end 
+  
+  def sendmessage
+      
+      if Conversation.between(current_user.id, params[:user_id]).present?
+         
+            @conversation = Conversation.between(current_user.id, params[:user_id]).first
+            @messages = @conversation.messages
+            @send = @messages.where(:user_id => current_user.id).take 
+         else
+            @send = []
+      end
+      
+      
+      respond_to do |format|
+            #format.html { redirect_to upload_create_paths }
+            format.js
+      end
   end
   
   private

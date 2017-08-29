@@ -110,22 +110,37 @@ window.onclick = function(event) {
     <div class="container allbox" style="margin-top:3rem">
       
       <div class="top-box">
-          <div class="left-box" >
+      
+          <!--여기가 프로필사진나오는 부분-->
+          <div class="left-box">
+                
+                <% if current_user.image == nil %>
+                  <img class="circle" src="/assets/basic image.jpg" alt="Card image cap">
+                      <%= form_tag mypage_profile_path, method: 'post', multipart: true, :class => "input_image" do %>
+                          <%= file_field_tag 'image' %>
+                          <%= submit_tag '업로드 하기', :class => "btn profile_btn" %>
+                      <% end %>
+                <% else %>
+                  <img class="circle" src="<%= current_user.image %>" alt="프로필 사진을 업로드 하세요">
+                    <%= form_tag mypage_profile_path, method: 'post', multipart: true, :class => "input_image" do %>
+                        <%= file_field_tag 'image' %>
+                        <%= submit_tag '업로드 하기', :class => "btn profile_btn" %>
+                    <% end %>
+                <% end %>
+          </div>  
+                
+                
+      
+      
+          <div class="cen-box" >
             <h2 style="text-align: rigth;"><%= current_user.name %></h2>
             <p><%= @u_info.where(:user_id => current_user.id).take.age %>년생</p>
             <p><%= @u_info.where(:user_id => current_user.id).take.school_name %></p>
             <button type="submit" class="btn btn-primary" onclick="location.href='/mypage/core_update' ">수정하기</button>
           </div>
           
-          <!--여기가 프로필사진나오는 부분-->
-          <div class="cen-box">
-                
-                  <img class="box_img" src="<%= current_user.image %>" alt="프로필 사진을 업로드 하세요">
-                    <%= form_tag mypage_profile_path, method: 'post', multipart: true, :class => "input_image" do %>
-                       <%= file_field_tag 'image' %>
-                       <%= submit_tag '업로드 하기', :class => "btn profile_btn" %>
-                    <% end %>
-          </div>
+
+          
           <div class="right-box">
             <% if @u_info.where(:user_id => current_user.id).take.one_time == nil %>
                      <h4 style="text-align: left; margin-left:0px; font-weight:bold">유형검사 하세요!</h4>
@@ -187,24 +202,26 @@ window.onclick = function(event) {
                   <li><%= link_to '회원가입', new_user_registration_path %></li>
                 <%else%>
                   <li><%= link_to('Logout', destroy_user_session_path, method: :get) %> </li>
-                </ul>
+          </ul>
           	<div class="portfoliocard">
               	<div class="profile_picture">
               	  <img class="small_img" src="<%= current_user.image %>" alt="">
-              	  <div id="bottom-head"></div>
+              	  <div id="bottom-head">
+              	    
+              	  </div>
               	</div>
               	
               	
               	<div class="right_col">
               		<h2 class="name" onclick="location.href='/mypage/index/<%= current_user.id%>'"><%= current_user.name %></h2>
-              		<ul class="contact_information">
-              			<li class="work">CEO</li>
-              			<li class="website"><a class="nostyle" href="#">www.apple.com</a></li>
-              			<li class="mail">john.doe@apple.com</li>
-              			<li class="phone">1-(732)-757-2923</li>
-              			<li class="resume"><a href="#" class="nostyle">download resume</a></li>
-              		</ul>
+              		<ul class="sidebar-list">
+              		    <li class="sidebar-item"><a href="/main/home" class="sidebar-anchor">홈</a></li>
+                      <li class="sidebar-item"><a href="/main/haveroom" class="sidebar-anchor">방으로 찾기</a></li>
+                      <li class="sidebar-item"><a href="/main/school" class="sidebar-anchor">기숙사로 찾기</a></li>
+                      <li class="sidebar-item"><a href="/main/nhaveroom" class="sidebar-anchor">붕:신 찾기</a></li>
+                  </ul>
               	</div>
-          	</div>
-          	<%end%>
+              <%end%>	
+        </div>
+          	
 

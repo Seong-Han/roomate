@@ -34,12 +34,13 @@ box-sizing: border-box;
 
 
 .top-box{
+    margin-top:2rem;
     display: flex;
     justify-content: center;
     
 }
 .left-box{
-    margin: auto 2rem;
+    
     text-align: right;
 }
 .right-box{
@@ -50,13 +51,17 @@ box-sizing: border-box;
   margin: auto 2rem;
 }
 
-.mypage_main-nav{
-    background-image:url('/assets/nav.png');
-    background-size: cover;
-    list-style: none;
-    display:flex;
-    padding: 4% 0%;
-    margin-bottom: 0px;
+.circle {
+  width: 300px;
+  height: 300px;
+  background-color:#FBC400;
+  border-radius: 50%;
+  display: inline-block;
+  text-align:center;
+  vertical-align:middle;
+}
+.circle:hover {
+  
 }
 
 
@@ -67,10 +72,6 @@ box-sizing: border-box;
     margin-top: 1rem;
     display: flex;
     justify-content: space-between;
-}
-.box_img{
-  height: 20rem;
-  width: 25rem;
 }
 #image{
   width: 8.1rem;
@@ -203,7 +204,7 @@ nav {
   margin: 0;
   list-style: none;
   position: relative;
-  margin-top: 150px;
+  margin-top: 20px;
   text-align: center;
 }
 

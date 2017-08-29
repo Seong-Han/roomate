@@ -7,7 +7,12 @@
         <% else %>
             <% @m_propose.each do |x| %>
                 <div class="card">
-                    <img class="card-img-top" src="<%= @user.where(:id => x.other_id).take.image %>" alt="프로필 사진이 없습니다.">
+                     <% if @user.where(:id => x.other_id).take.image == nil %>
+                         <img class="card-img-top" src="/assets/basic image.jpg" alt="Card image cap">
+                     <% else %>
+                        <img class="card-img-top" src="<%= @user.where(:id => x.other_id).take.image %>"  alt="Card image cap">
+                     <% end %>
+                  
                     <div class="card-block">
                         <h4 class="card-title"><%= @user.where(:id => x.other_id).take.name %></h4>
                      

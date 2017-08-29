@@ -1,7 +1,6 @@
 class MainController < ApplicationController
-    before_action :authenticate, only: [:propose]
-    
     #메인화면
+    
     def home
         
     end
@@ -61,6 +60,25 @@ class MainController < ApplicationController
         new_propose.user_id = current_user.id
         new_propose.other_id = params[:other_id]
         new_propose.save
+        redirect_to :back
+    end
+    
+    #확인 버튼 누르면 자세한 정보 뜨는 것
+    def detail_button
+        @detail_id = params[:detail_id]
+        @user = User.all
+        @u_info = UserInfo.all
+        @comment = Comment.all
+    end
+    
+    def comment_create
+        one_comment = Comment.create(content: params[:content], user_id: current_user.id)
+        redirect_to :back
+    end
+    
+    def destroy
+        one_comment = Comment.find(params[:id])
+        one_comment.destroy 
         redirect_to :back
     end
         

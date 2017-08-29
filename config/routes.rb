@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
     
+  
   #마이페이지 라우트
   # get '/choice/write/:current_user_id' => 'choice#write'
   
   get '/mypage/index/:current_user_id' => 'mypage#index', :as => :mypage_index
   post 'mypage/profile'
+  
   
   
   
@@ -48,7 +50,12 @@ Rails.application.routes.draw do
   get 'main/haveroom'
   get 'main/nhaveroom'
   get 'main/school'
+  get 'main/detail_button'
   
+  # 질문 있어요
+  post 'main/comment_create'
+  get '/main/destroy/:id' => 'main#destroy'
+
   #룸메 신청하기
   post 'main/propose'
   
@@ -60,11 +67,13 @@ Rails.application.routes.draw do
   get 'upload/index'
   get 'upload/write'
   post 'upload/create'
-  # 이거 뭔지 모르겠음 
-  get 'mypage/all_chat'
+  
   #쪽지 라우트 
-  get '/chat/:user_id' => 'mypage#chat' 
-  post '/chat/:user_id/mypage/message' => 'mypage#message'
+  get 'mypage/all_chat'
+  get 'chat/:user_id' => 'mypage#chat'  
+  post 'chat/:user_id/mypage/message' => 'mypage#message' 
+  get 'mypage/receipt'
+  get 'mypage/sendmessage'
   
   
   devise_for :users, :controllers => { :registrations => "registrations" }

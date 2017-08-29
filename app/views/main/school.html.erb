@@ -36,6 +36,9 @@
   //      modal.style.display = "none";
   //  }
 //}
+
+
+//해커톤 마지막 모달
 $(document).ready(function() {
       
         function toggleSidebar() {
@@ -132,6 +135,8 @@ $(document).ready(function() {
             </form>
         <% end %>
     <% end %>
+    
+    
     <!--여기가 프로필사진나오는 부분-->
     <% if @select.present? %>
         <div class="layout">
@@ -140,10 +145,10 @@ $(document).ready(function() {
             
             
               <div class="card">
-                <img class="card-img-top" src="<%= @user.where(:id => select.user_id).take.image %>" alt="Card image cap">
+                <img class="card-img-top" src="<%= @user.where(:id => @select.user_id).take.image %>" alt="Card image cap">
                 <div class="card-block ">
-                  <h4 class="card-title"><%= @user.where(:id => select.user_id).take.name %></h4>
-                  <p class="card-text"><%= select.school_name %> <%= select.created_at.strftime("%Y-%m-%d") %> )</p>
+                  <h4 class="card-title"><%= @user.where(:id => @select.user_id).take.name %></h4>
+                  <p class="card-text"><%= select.school_name %> <%= @select.created_at.strftime("%Y-%m-%d") %> )</p>
     
                 </div>
               </div>
@@ -152,7 +157,7 @@ $(document).ready(function() {
         </div>
    
     <% else %>
-      <h1> 검색 결과가 없습니다.</h1>
+      
       </br>
       <div class="layout" style="padding: 0 auto">
         <% @u_info.each do |x|%>
@@ -162,47 +167,14 @@ $(document).ready(function() {
                 <div class="card-block">
                     <h4 class="card-title"><%= @user.where(:id => x.user_id).take.name %></h4>
                     <p class="card-text"><%= x.school_name %> <%= x.created_at.strftime("%Y-%m-%d") %> </p>
-                    
-                    <!-- Trigger/Open The Modal 
-                        <button id="<%#= x.id %>">자세히 보기</button>
-                        <!-- The Modal 
-                        <div id="myModal" class="modal">
-                          <!-- Modal content 
-                              <div class="modal-content">
-                                <span class="close">&times;</span>
-                                <h3><%#= x.aa %>형</h3>
-                                <form action='/main/propose' method="post">
-                                  <input type="hidden" name="other_id" value="<#%=x.id%>">
-                                  <button  class="btn btn-primary" onclick="location.href='/main/propose'">룸메 신청하기</button>
-                                </form>
-                              </div>
-                        </div>-->
-                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal<%=x.id%>">
-                          자세히 보기
-                        </button>
                         
-                        <!-- Modal -->
-                        <div class="modal fade" id="myModal<%=x.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel<%=x.id%>">
-                          <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel<%=x.id%>"><%= @user.where(:id => x.user_id).take.name %></h4>
-                              </div>
-                              <div class="modal-body">
-                                <h3><%= x.aa %>형</h3>
-                                  <form action='/main/propose' method="post">
-                                    <input type="hidden" name="other_id" value="<%= x.user_id %>">
-                                    <button  class="btn btn-primary">룸메 신청하기</button>
-                                  </form>
-                              </div>
-                              <!--<div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                              </div>-->
-                            </div>
-                          </div>
-                        </div>
+                        <form action="/main/detail_button">
+                        <input type="hidden" value="<%= x.id %>" name="detail_id">
+                        <input type="submit" class="btn"  value="자세히 보기" >
+                        <!--<button type="button" class="btn btn-primary">자세히 보기</button>-->
+                        </form>
+                        
+                   
                    
                 </div>
             </div>
@@ -215,36 +187,47 @@ $(document).ready(function() {
   </main>
 
 
+    <%if current_user == nil%>
+       <div class="sidebar">
+              <ul class="main-nav new-user">
+                    <li>
+                      <img src="/assets/로고.jpg" height=40px style="margin-top:10px; margin-left:10px;"></li>
+                  
+                    <li><%= link_to '로그인', new_user_session_path %></li>
+                    <li><%= link_to '회원가입', new_user_registration_path %></li>
+              </ul>
+       
+       </div>
+     
+     <%else%>
+     
      <div class="sidebar">
             <ul class="main-nav new-user">
                   <li>
                     <img src="/assets/로고.jpg" height=40px style="margin-top:10px; margin-left:10px;"></li>
-                <%if current_user.nil?%>
+                
                   <li><%= link_to '로그인', new_user_session_path %></li>
                   <li><%= link_to '회원가입', new_user_registration_path %></li>
-                <%else%>
                   <li><%= link_to('Logout', destroy_user_session_path, method: :get) %> </li>
-                <%end%>  
             </ul>
           	<div class="portfoliocard">
                 	<div class="profile_picture">
-                  	  <img class="small_img" src="<%#= current_user.image %>" alt="">
+                  	  <img class="small_img" src="<%= current_user.image %>" alt="">
                   	  <div id="bottom-head">
                   	    
                   	 </div>
               	  </div>
-              	
-              	
               	<div class="right_col">
               		<h2 class="name" onclick="location.href='/mypage/index/<%= current_user.id%>'"><%= current_user.name %></h2>
-              		<ul class="contact_information">
-              			<li class="work">CEO</li>
-              			<li class="website"><a class="nostyle" href="#">www.apple.com</a></li>
-              			<li class="mail">john.doe@apple.com</li>
-              			<li class="phone">1-(732)-757-2923</li>
-              			<li class="resume"><a href="#" class="nostyle">download resume</a></li>
-              		</ul>
+              		<ul class="sidebar-list">
+              		    <li class="sidebar-item"><a href="/main/home" class="sidebar-anchor">홈</a></li>
+                      <li class="sidebar-item"><a href="/main/haveroom" class="sidebar-anchor">방으로 찾기</a></li>
+                      <li class="sidebar-item"><a href="/main/school" class="sidebar-anchor">기숙사로 찾기</a></li>
+                      <li class="sidebar-item"><a href="/main/nhaveroom" class="sidebar-anchor">붕:신 찾기</a></li>
+                  </ul>
               	</div>
           	</div>
      </div>
+                  
+<%end%>  
           	
